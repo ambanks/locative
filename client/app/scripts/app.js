@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name clientApp
+ * @name locativeApp
  * @description
- * # clientApp
+ * # locativeApp
  *
  * Main module of the application.
  */
 angular
-  .module('clientApp', [
+  .module('locativeApp', [
     'ngAnimate',
     'ngCookies',
     'ngMessages',
