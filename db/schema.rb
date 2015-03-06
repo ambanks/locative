@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306003916) do
+ActiveRecord::Schema.define(version: 20150306230650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,18 +26,21 @@ ActiveRecord::Schema.define(version: 20150306003916) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "caption"
-    t.decimal  "latitude",   precision: 10
-    t.decimal  "longitude",  precision: 10
+    t.decimal  "latitude",    precision: 10
+    t.decimal  "longitude",   precision: 10
     t.string   "time_stamp"
     t.integer  "journey_id"
-    t.text     "tags",                      default: [],              array: true
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.text     "tags",                       default: [],              array: true
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.string   "low_res_img"
+    t.string   "med_res_img"
+    t.string   "hi_res_img"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.string   "instagram_id"
+    t.integer  "instagram_id"
     t.string   "email"
     t.string   "password_digest"
     t.string   "remember_token"
