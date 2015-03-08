@@ -16,6 +16,7 @@ module Instagram
     return self
   end
 
+  # TODO Add check to avoid duplicates/see if user posts are already saved
   def self.collect_user_posts(user)
     @current_user = user
     @tags_json.each do |tag, hash|
@@ -61,9 +62,4 @@ module Instagram
   end
 
 end
-
-
-
-
-
 
