@@ -16,31 +16,52 @@ module Instagram
     return self
   end
 
-  # TODO Add check to avoid duplicates/see if user posts are already saved
+  # def self.get_locative_for_testing
+  #   tags = ['locativego', 'locative', 'locativeend']
+  #   tags.each do |tag|
+  #     @tags_json[tag] = HTTParty.get("https://api.instagram.com/v1/tags/#{tag}/media/recent?access_token=#{@access_token}")
+  #   end
+  #   return @tags_json
+  # end
+
   def self.collect_user_posts(user)
     @current_user = user
+    @user_posts = []
+    ig_ids = @current_user.posts.collect { |post| post.instagram_id }
+
     @tags_json.each do |tag, hash|
       hash['data'].each do |post|
-        @user_posts << post if post['user']['id'] == @current_user.instagram_id.to_s
+        if post['user']['id'] == @current_user.instagram_id.to_s
+          @user_posts << post unless ig_ids.include?(post['id'])
+        end
       end
     end
+
     return self
   end
   
   def self.make_journeys
-    current_journey = @current_user.journeys.last
+    if @current_user.journeys.empty?
+      current_journey = @current_user.journeys.create(          
+        name: "My First Journey")
+    else
+      current_journey = @current_user.journeys.last
+    end
+
     @user_posts.sort_by! { |post| post['created_time'] }
-    @user_posts.each do |post|
-      case 
-      when post['tags'].include?('locativego')
-        current_journey = @current_user.journeys.create(
-        name: "New Journey",
-        date: Time.at(post['created_time'].to_i).strftime("%A, %B %d, %Y"))
-        add_post_to_journey(current_journey, post)
-      when post['tags'].include?('locative')
-        add_post_to_journey(current_journey, post)
-      when post['tags'].include?('locativeend')
-        add_post_to_journey(current_journey, post)      
+    unless @user_posts.empty?
+      @user_posts.each do |post|
+        case 
+        when post['tags'].include?('locativego')
+          current_journey = @current_user.journeys.create(
+          name: "New Journey",
+          date: Time.at(post['created_time'].to_i).strftime("%A, %B %d, %Y"))
+          add_post_to_journey(current_journey, post)
+        when post['tags'].include?('locative')
+          add_post_to_journey(current_journey, post)
+        when post['tags'].include?('locativeend')
+          add_post_to_journey(current_journey, post)      
+        end
       end
     end
   end
@@ -54,11 +75,8 @@ module Instagram
       tags:         post['tags'],
       low_res_img:  post['images']['low_resolution']['url'],
       med_res_img:  post['images']['thumbnail']['url'],
-      hi_res_img:   post['images']['standard_resolution']['url'])
-  end
-
-  def self.say_hello
-    "Hello, I'm Instagram"
+      hi_res_img:   post['images']['standard_resolution']['url'],
+      instagram_id: post['id'])
   end
 
 end
