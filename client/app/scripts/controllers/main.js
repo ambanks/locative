@@ -18,26 +18,38 @@ angular.module('locativeApp')
       bounds: {}
     };
 
-    $scope.markerList = [
-      {
-        id: 0,
-        latitude: 45,
-        longitude: -73
-      },
+    $scope.polylines = [
       {
         id: 1,
-        latitude: 46,
-        longitude: -74
-      },
-      {
-        id: 2,
-        latitude: 48,
-        longitude: -75
-      },
-      {
-        id: 3,
-        latitude: 49,
-        longitude: -76
-      },
+        path: [
+            {
+                latitude: 33.7335,
+                longitude: -84.3735
+            },
+            {
+                latitude: 33.7487,
+                longitude: -84.3713
+            },
+            {
+                latitude: 33.7729,
+                longitude: -84.3657
+            }  
+        ],
+        stroke: {
+            color: '#6060FB',
+            weight: 3
+        },
+        editable: true,
+        draggable: true,
+        geodesic: true,
+        visible: true,
+        icons: [{
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE
+            },
+            offset: '25px'
+          
+        }]
+      }
     ];
   });
