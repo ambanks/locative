@@ -5,11 +5,14 @@ gem 'rails', '4.2.0'
 
 gem 'rails-api'
 
-gem 'spring', :group => :development
+gem 'spring',        :group => :development
 
+gem 'pry',           :group => :development
+gem 'awesome_print', :group => :development
 
 gem 'pg'
 
+gem 'httparty'
 
 
 # To use ActiveModel has_secure_password
