@@ -4,8 +4,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
-
+    @posts = Post.select do |post|
+      post.journey_id == params[:journey_id].to_i
+    end
     render json: @posts
   end
 

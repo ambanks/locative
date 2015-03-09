@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
-  resources :posts, except: [:new, :edit]
-  resources :journeys, except: [:new, :edit]
-  resources :users, except: [:new, :edit]
+
+  scope '/api' do  
+    resources :users do
+      resources :journeys do
+        resources :posts
+      end
+    end
+  end
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

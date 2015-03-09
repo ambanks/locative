@@ -16,13 +16,13 @@ module Instagram
     return self
   end
 
-  # def self.get_locative_for_testing
-  #   tags = ['locativego', 'locative', 'locativeend']
-  #   tags.each do |tag|
-  #     @tags_json[tag] = HTTParty.get("https://api.instagram.com/v1/tags/#{tag}/media/recent?access_token=#{@access_token}")
-  #   end
-  #   return @tags_json
-  # end
+  def self.get_locative_for_testing
+    tags = ['locativego', 'locative', 'locativeend']
+    tags.each do |tag|
+      @tags_json[tag] = HTTParty.get("https://api.instagram.com/v1/tags/#{tag}/media/recent?access_token=#{@access_token}")
+    end
+    return @tags_json
+  end
 
   def self.collect_user_posts(user)
     @current_user = user
@@ -35,6 +35,7 @@ module Instagram
           @user_posts << post unless ig_ids.include?(post['id'])
         end
       end
+      # TODO Add logic to continue searches if nothing found
     end
 
     return self
