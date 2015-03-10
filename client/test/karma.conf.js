@@ -32,6 +32,9 @@ module.exports = function(config) {
       'bower_components/lodash/dist/lodash.compat.js',
       'bower_components/angular-google-maps/dist/angular-google-maps.js',
       'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/leaflet/dist/leaflet.js',
+      'bower_components/leaflet/dist/leaflet-src.js',
+      'bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js',
       // endbower
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
