@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user,    only: [:update]
   before_action :redirect_if_signed_in, only: [:create]
 
+
   # GET /users
   # GET /users.json
   def index
@@ -14,6 +15,11 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    render json: @user
+  end
+
+  def new
+    @user = User.new(new_user_params)
     render json: @user
   end
 
@@ -64,7 +70,11 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :instagram_id)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :instagram_name)
+    end
+
+    def new_user_params
+      params.permit(:name, :email, :password, :password_confirmation, :instagram_name)
     end
 
     def correct_user

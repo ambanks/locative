@@ -7,7 +7,7 @@
  * # AboutCtrl
  * Controller of the clientApp
  */
-angular.module('clientApp')
+angular.module('locativeApp')
   .controller('AboutCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
