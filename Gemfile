@@ -12,6 +12,7 @@ gem 'awesome_print', :group => :development
 
 gem 'pg'
 
+gem 'responders', '~> 2.0'
 gem 'httparty'
 
 

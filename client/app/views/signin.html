@@ -1,7 +1,7 @@
-  <form id="create-session-form" ng-submit="createSession()">
+  <form id="log-in-form" ng-submit="login(credentials)">
     <label>Sign In</label>
-    <input type="email" placeholder="email" ng-model="returningUserEmail">
-    <input type="text" placeholder="password" ng-model="returningUserPassword">
+    <input type="email" placeholder="email" ng-model="credentials.email">
+    <input type="text" placeholder="password" ng-model="credentials.password">
     <input type="submit">
   </form>
-  <button ng-click="destroySession()">Sign Out</button>
+  <button ng-click="logout()">Sign Out</button>

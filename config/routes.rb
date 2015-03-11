@@ -1,12 +1,30 @@
 Rails.application.routes.draw do
 
-  scope '/api' do  
-    resources :users do
+  # scope '/api' do  
+  #   resources :users do
+  #     resources :journeys do
+  #       resources :posts
+  #     end
+  #   end
+  #   resources :sessions
+  # end
+
+
+  # We have put everything under '/app' or '/api' so that
+  # we have 2 prefixes for our proxy:
+  namespace :app do
+    # These resources are available from the Rails routes
+  end
+
+  namespace :api do
+    # These resources are available from the AngularJS routes
+    resources :users, only: [:create, :show, :update, :destroy] do
       resources :journeys do
         resources :posts
       end
     end
-    resources :sessions
+    resources :sessions, only: [:create]#, :destroy]
+    delete '/sessions', to: 'sessions#destroy'
   end
 
 

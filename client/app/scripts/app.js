@@ -42,10 +42,10 @@ angular
       })
       .when('/signin', {
         templateUrl: 'views/signin.html',
-        controller: 'SessionCtrl'
+        controller: 'LoginController'
       })
-
       .otherwise({
         redirectTo: '/'
       });
-  });
+  });   
+
