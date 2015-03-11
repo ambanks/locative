@@ -7,7 +7,8 @@
  * Controller of the locativeApp
  */
 angular.module('locativeApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http, leafletData) {
+
     angular.extend($scope, {
                 markers: [],
                 bounds: {},
@@ -19,7 +20,7 @@ angular.module('locativeApp')
     var i;
     var posts = [];
 
-    $http.get('/api/users/3/journeys/11/posts')
+    $http.get('/api/users/4/journeys/13/posts')
     .success(function(data) {
       for (i=0; i < data.length; i++) {
         var postData = {
@@ -79,6 +80,17 @@ angular.module('locativeApp')
         }
       };
       $scope.addMarkers();
+
+  
+      leafletData.getMap().then(function(map) {
+          L.Routing.control({
+            waypoints: [
+              L.latLng(33.75409633, -84.37999947),
+              L.latLng(33.75599667, -84.3739903),
+              L.latLng(33.755784, -84.381622)
+            ]
+          }).addTo(map);
+      });
 
     });
   });
