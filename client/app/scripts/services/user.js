@@ -7,8 +7,8 @@ angular.module('locativeApp')
     return $http.get('/api/users');
   };
 
-  this.getUser = function(userId) {
-    return $http.get('/api/users/' + userId);
+  this.getUser = function(user) {
+    return $http.get('/api/users/' + user.id);
   };
 
   this.updateUser = function(user) {

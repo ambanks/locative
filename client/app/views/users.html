@@ -1,3 +1,5 @@
 <h2>Users</h2>
 
-<h3 ng-repeat="user in users">{{ user.name }}</h3>
+<h3 ng-repeat="user in users">
+  <a href="" ng-click="getUser(user)">{{ user.name }}</a>
+</h3>

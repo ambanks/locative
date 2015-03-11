@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new(new_user_params)
+    # @user = User.new(new_user_params)
     render json: @user
   end
 

@@ -40,7 +40,10 @@ angular
         templateUrl: 'views/signup.html',
         controller: 'UserCtrl'
       })
-
+      .when('/signin', {
+        templateUrl: 'views/signin.html',
+        controller: 'SessionCtrl'
+      })
 
       .otherwise({
         redirectTo: '/'

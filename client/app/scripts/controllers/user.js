@@ -15,8 +15,8 @@ angular.module('locativeApp')
 
   getUsers();
 
-  $scope.getUser = function(userId) {
-    UserService.getUser(userId)
+  $scope.getUser = function(user) {
+    UserService.getUser(user)
     .success(function(data) {
       $scope.user = data;
     })
@@ -30,7 +30,7 @@ angular.module('locativeApp')
   $scope.updateUser = function(user) {
     return UserService.updateUser(user)
     .success(function() {
-      $scope.getUser();
+      getUsers();
     })
     .error(function(data, status) {
       console.log(data);
