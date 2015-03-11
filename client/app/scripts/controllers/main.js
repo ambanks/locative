@@ -14,28 +14,36 @@ angular.module('locativeApp')
                     lng: -84.36736,
                     zoom: 8
                 },
-                markers: {
-                    mainMarker: {
-                        lat: 33.77152,
-                        lng: -84.36736,
-                        focus: true,
-                        message: 'Hey, drag me if you want',
-                        draggable: true
-                    }
-                }
+                markers: []                            
             });
-    
+
+    var latitudes  = [];
+    var longitudes = [];
+    var i;
+    var posts = [];
+
     $http.get('/api/users/4/journeys/13/posts')
     .success(function(data) {
-      var latitudes  = [];
-      var longitudes = [];
-      var i;
       for (i=0; i < data.length; i++) {
-        latitudes.push(data[i].latitude);
-        longitudes.push(data[i].longitude);
+        var postData = {
+        caption:     data[i].caption, 
+        latitude:    data[i].latitude, 
+        longitude:   data[i].longitude,
+        timeStamp:   data[i].time_stamp,
+        journeyId:   data[i].journey_id,
+        tags:        data[i].tags,
+        createdAt:   data[i].created_at,
+        updatedAt:   data[i].updated_at,
+        lowResImg:   data[i].low_res_img, 
+        medResImg:   data[i].med_res_img, 
+        hiResImg:    data[i].hi_res_img, 
+        instagramId: data[i].instagram_id 
+        };
+
+        posts.push(postData);
+        latitudes.push(postData.latitude);
+        longitudes.push(postData.longitude);
       }
-      console.log(latitudes);
-      console.log(longitudes);
 
       var maxLat = _.max(latitudes);
       var minLat = _.min(latitudes);
@@ -43,40 +51,28 @@ angular.module('locativeApp')
       var minLng = _.min(longitudes);
       var centerLat = (parseFloat(minLat) + parseFloat(maxLat)) / 2;
       var centerLng = (parseFloat(minLng) + parseFloat(maxLng)) / 2;
-      console.log(centerLat, centerLng);
 
+      $scope.addMarkers = function() {
+        $scope.markers = [];
+        var loopResult = [];
+        angular.forEach(posts, function(post) {
+          loopResult.push( 
+            { lat: parseFloat(post.latitude),
+             lng: parseFloat(post.longitude),
+             message: post.caption 
+          });
+        });
 
-      // var maxLat = _.max(latitudes, function(latitude) {
-      //  return parseInt(latitude);
-      // });
-      // console.log(maxLat);
+        for (i=0;i<loopResult.length;i++) {
+          $scope.markers.push({
+            lat: loopResult[i].lat,
+            lng: loopResult[i].lng,
+            message: loopResult[i].message
+          })
+        }
+      };
 
-      // var minLat = _.min(latitudes, function(latitude) {
-      //  return parseInt(latitude);
-      // });
-      // console.log(minLat);
-
-      // var maxLng = _.max(longitudes, function(longitude) {
-      //  return parseInt(longitude);
-      // });
-
-      // var minLng = _.min(longitudes, function(longitude) {
-      //  return parseInt(longitude);
-      // });
-
+      $scope.addMarkers();
     });
   });
-
-
-
-
-    // function getLocations() {
-    //   var x = [];
-      // });
-        // var locations = [
-        //   { latitude: ..., longitude: ..., low_res_img: '', med_res_img: '', hi_res_img: '' },
-        //   { latitude: ..., longitude: ..., low_res_img: '', med_res_img: '', hi_res_img: '' },
-        //   { latitude: ..., longitude: ..., low_res_img: '', med_res_img: '', hi_res_img: '' },
-        //   { latitude: ..., longitude: ..., low_res_img: '', med_res_img: '', hi_res_img: '' }
-        // ];
 
