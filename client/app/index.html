@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="locativeApp">
+  <body ng-app="locativeApp" ng-controller="ApplicationController">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -33,6 +33,7 @@
             </button>
 
             <a class="navbar-brand" href="#/">locative</a>
+            <a class="navbar-brand" ng-model="currentUser" href="#/">{{ currentUser.name }}</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
@@ -94,6 +95,7 @@
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/services/auth.js"></script>
         <script src="scripts/services/session.js"></script>
+        <script src="scripts/controllers/application.js"></script>
         <script src="scripts/constants/authEvents.js"></script>
         <!-- endbuild -->
 </body>

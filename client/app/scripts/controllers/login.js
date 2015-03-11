@@ -6,11 +6,6 @@ angular.module('locativeApp')
     email: '',
     password: ''
   };
-  $scope.currentUser = null;
-  $scope.isAuthorized = AuthService.isAuthorized;
-  $scope.setCurrentUser = function (user) {
-    $scope.currentUser = user;
-  };
   $scope.login = function (credentials) {
     AuthService.login(credentials).then(function (user) {
       $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
