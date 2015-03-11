@@ -9,12 +9,9 @@
 angular.module('locativeApp')
   .controller('MainCtrl', function ($scope, $http) {
     angular.extend($scope, {
-                atlanta: {
-                    lat: 33.77152,
-                    lng: -84.36736,
-                    zoom: 8
-                },
-                markers: []                            
+                markers: [],
+                bounds: {},
+                center: {}                           
             });
 
     var latitudes  = [];
@@ -22,7 +19,7 @@ angular.module('locativeApp')
     var i;
     var posts = [];
 
-    $http.get('/api/users/4/journeys/13/posts')
+    $http.get('/api/users/3/journeys/11/posts')
     .success(function(data) {
       for (i=0; i < data.length; i++) {
         var postData = {
@@ -52,14 +49,24 @@ angular.module('locativeApp')
       var centerLat = (parseFloat(minLat) + parseFloat(maxLat)) / 2;
       var centerLng = (parseFloat(minLng) + parseFloat(maxLng)) / 2;
 
+      $scope.bounds = {
+        southWest: {
+            lat: (parseFloat(minLat)), 
+            lng: (parseFloat(minLng))
+        },
+        northEast: {
+            lat: (parseFloat(maxLat)),
+            lng: (parseFloat(maxLng))
+        }
+      }
       $scope.addMarkers = function() {
         $scope.markers = [];
         var loopResult = [];
         angular.forEach(posts, function(post) {
           loopResult.push( 
             { lat: parseFloat(post.latitude),
-             lng: parseFloat(post.longitude),
-             message: post.caption 
+              lng: parseFloat(post.longitude),
+              message: post.caption 
           });
         });
 
@@ -71,8 +78,8 @@ angular.module('locativeApp')
           })
         }
       };
-
       $scope.addMarkers();
+
     });
   });
 
