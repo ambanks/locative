@@ -117,38 +117,57 @@ angular.module('locativeApp')
             lng: (parseFloat(maxLng))
         }
       };
-      $scope.addMarkers = function() {
-        $scope.markers = [];
-        var loopResult = [];
-        angular.forEach(posts, function(post) {
-          loopResult.push( 
-            { lat: parseFloat(post.latitude),
-              lng: parseFloat(post.longitude),
-              message: post.caption
-          });
-        });
+      // $scope.addMarkers = function() {
+      //   $scope.markers = [];
+      //   var loopResult = [];
+      //   angular.forEach(posts, function(post) {
+      //     loopResult.push( 
+      //       { lat: parseFloat(post.latitude),
+      //         lng: parseFloat(post.longitude),
+      //         message: post.caption
+      //     });
+      //   });
 
-        for (i=0;i<loopResult.length;i++) {
-          $scope.markers.push({
-            lat: loopResult[i].lat,
-            lng: loopResult[i].lng,
-            message: loopResult[i].message
-          });
-        }
-      };
-      $scope.addMarkers();
- 
+      //   for (i=0;i<loopResult.length;i++) {
+      //     $scope.markers.push({
+      //       lat: loopResult[i].lat,
+      //       lng: loopResult[i].lng,
+      //       message: loopResult[i].message
+      //     });
+      //   }
+      // };
+      // $scope.addMarkers();
+      
+      var markers = [];
+      for(i=0;i<posts.length;i++) {
+        markers.push(L.marker([parseFloat(posts[i].latitude), parseFloat(posts[i].longitude)]));
+      }
+
       var waypoints = [];
-
       for(i=0;i<posts.length;i++) {
         waypoints.push(L.latLng(parseFloat(posts[i].latitude), parseFloat(posts[i].longitude)));
       }
-      
+
       leafletData.getMap().then(function(map) {
         L.Routing.control({
           waypoints: waypoints,
           show: false,
         }).addTo(map);
+
+      });
+
+      $scope.directionsToggle = function () {
+        $scope.isDirectionsVisible = !$scope.isDirectionsVisible;
+      };
+      leafletData.getMap().then(function(map) {
+        L.Routing.control({
+          waypoints: waypoints,
+          show: $scope.isDirectionsVisible
+        }).addTo(map);
+
+        for(i=0;i<posts.length;i++) {
+        markers[i].bindPopup('<img src="' + posts[i].lowResImg + '">').addTo(map);
+        }
       });
     });
   });
