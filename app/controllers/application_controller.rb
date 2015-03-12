@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound,  with: :record_not_found
   rescue_from ActiveRecord::RecordNotUnique, with: :unprocessable_entity
 
-  protect_from_forgery with: :null_session
+  # protect_from_forgery with: :null_session
   skip_before_action :verify_authenticity_token, if: :json_request?
 
   include SessionsHelper
