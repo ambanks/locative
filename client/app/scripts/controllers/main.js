@@ -12,15 +12,72 @@ angular.module('locativeApp')
     angular.extend($scope, {
                 markers: [],
                 bounds: {},
-                center: {}                           
+                center: {},
+                layers: {
+                  baselayers: {
+                    osm: {
+                      name: 'StreetMap',
+                      type: 'xyz',
+                      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+                      layerOptions: {
+                        subdomains: ['a', 'b', 'c'],
+                        attribution: '&copy; <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors',
+                        continuousWorld: true
+                      }
+                    },
+                    cycle: {
+                      name: 'Satellite',
+                      type: 'xyz',
+                      url: 'http://otile1.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg',
+                      layerOptions: {
+                        subdomains: ['a', 'b', 'c'],
+                        attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.creativecommons/content/osm/mq_logo.png"',
+                        continuousWorld: true
+                      }
+                    },
+                    toner: {
+                      name: 'Toner',
+                      type: 'xyz',
+                      url: 'http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png',
+                      layerOptions: {
+                        attribution: 'Map tiles by <a href="http://stamen.com" target="_blank">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0" target="_blank">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org" target="_blank">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright" target="_blank">ODbL</a>.',
+                        continuousWorld: true
+                      }
+                    },
+                    terrain: {
+                      name: 'Terrain',
+                      type: 'xyz',
+                      url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png',
+                      layerOptions: {
+                        attribution: 'Map tiles by <a href="http://stamen.com" target="_blank">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0" target="_blank">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org" target="_blank">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_blank">CC BY SA</a>.',
+                        continuousWorld: true
+                      }
+                    }
+                  },
+                  overlays: {
+                    watercolor: {
+                      name: 'Watercolor',
+                      type: 'xyz',
+                      url: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png',
+                      layerOptions: {
+                        visible: true,
+                        opacity: 0.5, 
+                        attribution: 'Map tiles by <a href="http://stamen.com" target="_blank">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0" target="_blank">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org" target="_blank">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_blank">CC BY SA</a>.',
+                        continuousWorld: true
+                      }
+                    }
+                  }
+                }                           
             });
+
+
 
     var latitudes  = [];
     var longitudes = [];
     var i;
     var posts = [];
 
-    $http.get('/api/users/4/journeys/13/posts')
+    $http.get('/api/users/1/journeys/1/posts')
     .success(function(data) {
       for (i=0; i < data.length; i++) {
         var postData = {
@@ -47,8 +104,8 @@ angular.module('locativeApp')
       var minLat = _.min(latitudes);
       var maxLng = _.max(longitudes);
       var minLng = _.min(longitudes);
-      var centerLat = (parseFloat(minLat) + parseFloat(maxLat)) / 2;
-      var centerLng = (parseFloat(minLng) + parseFloat(maxLng)) / 2;
+      // var centerLat = (parseFloat(minLat) + parseFloat(maxLat)) / 2;
+      // var centerLng = (parseFloat(minLng) + parseFloat(maxLng)) / 2;
 
       $scope.bounds = {
         southWest: {
@@ -59,7 +116,7 @@ angular.module('locativeApp')
             lat: (parseFloat(maxLat)),
             lng: (parseFloat(maxLng))
         }
-      }
+      };
       $scope.addMarkers = function() {
         $scope.markers = [];
         var loopResult = [];
@@ -67,7 +124,7 @@ angular.module('locativeApp')
           loopResult.push( 
             { lat: parseFloat(post.latitude),
               lng: parseFloat(post.longitude),
-              message: post.caption 
+              message: post.caption
           });
         });
 
@@ -76,22 +133,23 @@ angular.module('locativeApp')
             lat: loopResult[i].lat,
             lng: loopResult[i].lng,
             message: loopResult[i].message
-          })
+          });
         }
       };
       $scope.addMarkers();
+ 
+      var waypoints = [];
 
-  
+      for(i=0;i<posts.length;i++) {
+        waypoints.push(L.latLng(parseFloat(posts[i].latitude), parseFloat(posts[i].longitude)));
+      }
+      
       leafletData.getMap().then(function(map) {
-          L.Routing.control({
-            waypoints: [
-              L.latLng(33.75409633, -84.37999947),
-              L.latLng(33.75599667, -84.3739903),
-              L.latLng(33.755784, -84.381622)
-            ]
-          }).addTo(map);
+        L.Routing.control({
+          waypoints: waypoints,
+          show: false,
+        }).addTo(map);
       });
-
     });
   });
 
