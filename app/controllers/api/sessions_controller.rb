@@ -4,7 +4,7 @@ class Api::SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       sign_in user
-      render json: current_user, status: 200
+      render json: user, status: 200
     else
       render json: { error: 'Invalid email or password' }, status: 422
     end
