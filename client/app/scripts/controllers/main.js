@@ -154,17 +154,6 @@ angular.module('locativeApp')
           show: false,
         }).addTo(map);
 
-      });
-
-      $scope.directionsToggle = function () {
-        $scope.isDirectionsVisible = !$scope.isDirectionsVisible;
-      };
-      leafletData.getMap().then(function(map) {
-        L.Routing.control({
-          waypoints: waypoints,
-          show: $scope.isDirectionsVisible
-        }).addTo(map);
-
         for(i=0;i<posts.length;i++) {
         markers[i].bindPopup('<img src="' + posts[i].lowResImg + '">').addTo(map);
         }
