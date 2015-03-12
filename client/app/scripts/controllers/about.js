@@ -7,6 +7,7 @@
  * # AboutCtrl
  * Controller of the clientApp
  */
+ 
 angular.module('locativeApp')
   .controller('AboutCtrl', function ($scope) {
     $scope.awesomeThings = [

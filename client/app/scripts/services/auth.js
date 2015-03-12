@@ -1,36 +1,86 @@
 'use strict';
 
 angular.module('locativeApp')
-.factory('AuthService', function ($http, Session) {
-  var authService = {};
- 
-  authService.login = function (credentials) {
-    return $http
-      .post('/api/sessions', { session: credentials } )
-      .then(function (response) {
-        Session.create(response.data.id);
-        return response.data;
-      });
-  };
- 
-  authService.isAuthenticated = function () {
-    return !!Session.userId;
-  };
- 
-  authService.isAuthorized = function (authorizedRoles) {
-    if (!angular.isArray(authorizedRoles)) {
-      authorizedRoles = [authorizedRoles];
-    }
-    return (authService.isAuthenticated() &&
-      authorizedRoles.indexOf(Session.userRole) !== -1);
-  };
- 
-  authService.logOut = function(){
-    Session.destroy();
+.service('AuthService', function ($http) {
+
+  var that = this;
+
+  that.currentUser = null;
+
+  that.isAuthenticated = function() {
+    return !!that.currentUser;
   };
 
-  return authService;
+  that.getSession = function() {
+    var deferred = $http.get('/api/sessions');
+    deferred.success(function(user) {
+      console.log('getSession returned user = ' + JSON.stringify(user));
+      that.currentUser = user;
+    });
+    return deferred;
+  };
+
+  that.getSession();
+
+  that.signUp = function(user) {
+    console.log('signUp: user = ' + JSON.stringify(user));
+    var deferred = $http.post('/api/users', { user: user });
+    deferred.success(function(user) {
+      that.currentUser = user;
+    });
+    return deferred;
+  };
+
+  that.signIn = function(session) {
+    console.log('signIn: session = ' + JSON.stringify(session));
+    var deferred = $http.post('/api/sessions', session);
+    deferred.success(function(user) {
+      that.currentUser = user;
+    });
+    return deferred;
+  };
+
+  that.signOut = function() {
+    console.log('signOut');
+    var deferred = $http.delete('/api/sessions');
+    deferred.success(function() {
+      that.currentUser = null;
+    });
+    return deferred;
+  };
 });
+
+
+
+//   var authService = {};
+ 
+//   authService.login = function (credentials) {
+//     return $http
+//       .post('/api/sessions', { session: credentials } )
+//       .then(function (response) {
+//         Session.create(response.data.id);
+//         return response.data;
+//       });
+//   };
+ 
+//   authService.isAuthenticated = function () {
+//     return !!Session.userId;
+//   };
+ 
+//   authService.isAuthorized = function (authorizedRoles) {
+//     if (!angular.isArray(authorizedRoles)) {
+//       authorizedRoles = [authorizedRoles];
+//     }
+//     return (authService.isAuthenticated() &&
+//       authorizedRoles.indexOf(Session.userRole) !== -1);
+//   };
+ 
+//   authService.logOut = function(){
+//     Session.destroy();
+//   };
+
+//   return authService;
+// });
 
 
 
