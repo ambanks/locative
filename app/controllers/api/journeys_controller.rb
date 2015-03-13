@@ -1,4 +1,4 @@
-class JourneysController < ApplicationController
+class Api::JourneysController < ApplicationController
   before_action :set_journey, only: [:show, :update, :destroy]
 
   # GET /journeys
