@@ -75,7 +75,7 @@ angular.module('locativeApp')
     var i;
     var posts = [];
 
-    $http.get('/api/users/1/journeys/16/posts')
+    $http.get('/api/users/1/journeys/1/posts')
     .success(function(data) {
       for (i=0; i < data.length; i++) {
         var postData = {
