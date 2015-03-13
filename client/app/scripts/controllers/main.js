@@ -70,8 +70,6 @@ angular.module('locativeApp')
                 }                           
             });
 
-
-
     var latitudes  = [];
     var longitudes = [];
     var i;
@@ -104,8 +102,6 @@ angular.module('locativeApp')
       var minLat = _.min(latitudes);
       var maxLng = _.max(longitudes);
       var minLng = _.min(longitudes);
-      // var centerLat = (parseFloat(minLat) + parseFloat(maxLat)) / 2;
-      // var centerLng = (parseFloat(minLng) + parseFloat(maxLng)) / 2;
 
       $scope.bounds = {
         southWest: {
@@ -117,26 +113,6 @@ angular.module('locativeApp')
             lng: (parseFloat(maxLng))
         }
       };
-      // $scope.addMarkers = function() {
-      //   $scope.markers = [];
-      //   var loopResult = [];
-      //   angular.forEach(posts, function(post) {
-      //     loopResult.push( 
-      //       { lat: parseFloat(post.latitude),
-      //         lng: parseFloat(post.longitude),
-      //         message: post.caption
-      //     });
-      //   });
-
-      //   for (i=0;i<loopResult.length;i++) {
-      //     $scope.markers.push({
-      //       lat: loopResult[i].lat,
-      //       lng: loopResult[i].lng,
-      //       message: loopResult[i].message
-      //     });
-      //   }
-      // };
-      // $scope.addMarkers();
       
       var markers = [];
       for(i=0;i<posts.length;i++) {
@@ -149,15 +125,20 @@ angular.module('locativeApp')
       }
 
       leafletData.getMap().then(function(map) {
-        L.Routing.control({
-          waypoints: waypoints,
-          show: false,
-        }).addTo(map);
+        var itinerary;
+        $scope.showRoute = function() {                    
+          itinerary = L.Routing.control({ waypoints: waypoints, show: true }).addTo(map);   
+        };
+
+        $scope.hideRoute = function() {                    
+          itinerary.removeFrom(map);  
+        };
 
         for(i=0;i<posts.length;i++) {
-        markers[i].bindPopup('<img src="' + posts[i].lowResImg + '">').addTo(map);
+        markers[i].bindPopup('<img src="' + posts[i].lowResImg + '">' + posts[i].caption).addTo(map);
         }
       });
     });
   });
+
 

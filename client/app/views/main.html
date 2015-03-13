@@ -1,3 +1,10 @@
 <h1>Locative</h1>
+<div ng-controller="MainCtrl">
+  <div class = "row" style="display: inline;">
+    <button ng-click="showRoute()" id="directions-button" style=" displaheight: 50px; width: 80px; margin-bottom: 10px; border-radius: 10px">Show Route</button>
+    <button ng-click="hideRoute()" id="directions-button" style="height: 50px; width: 80px; margin-left: 5%; margin-bottom: 10px; border-radius: 10px">Hide Route</button>
+  </div>  
+  <br>
 
-<leaflet width="640px" height="480px" markers="markers" center="center" bounds="bounds" layers="layers"></leaflet>
+  <leaflet width="640px" height="480px" markers="markers" center="center" bounds="bounds" layers="layers"></leaflet>
+</div>
