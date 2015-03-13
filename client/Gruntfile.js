@@ -1,4 +1,4 @@
-// Generated on 2015-03-05 using generator-angular 0.11.1
+// Generated on 2015-03-04 using generator-angular 0.11.1
 'use strict';
 
 // # Globbing
@@ -18,6 +18,7 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
+    // dist: 'dist'
     dist: '../public'
   };
 
@@ -155,13 +156,14 @@ module.exports = function (grunt) {
 
     // Empties folders to start fresh
     clean: {
+      options: { force: true },
       dist: {
         files: [{
           dot: true,
           src: [
             '.tmp',
             '<%= yeoman.dist %>/{,*/}*',
-            '!<%= yeoman.dist %>/.git{,*/}*'
+            '!<%= yeoman.dist %>/.git*'
           ]
         }]
       },
@@ -246,7 +248,8 @@ module.exports = function (grunt) {
       },
       server: {
         options: {
-          sourcemap: true
+          sourcemap: true,
+    debugInfo: true
         }
       }
     },
@@ -321,16 +324,16 @@ module.exports = function (grunt) {
     //   dist: {}
     // },
 
-    imagemin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.{png,jpg,jpeg,gif}',
-          dest: '<%= yeoman.dist %>/images'
-        }]
-      }
-    },
+    // imagemin: {
+    //   dist: {
+    //     files: [{
+    //       expand: true,
+    //       cwd: '<%= yeoman.app %>/images',
+    //       src: '{,*/}*.{png,jpg,jpeg,gif}',
+    //       dest: '<%= yeoman.dist %>/images'
+    //     }]
+    //   }
+    // },
 
     svgmin: {
       dist: {
@@ -394,7 +397,7 @@ module.exports = function (grunt) {
             '.htaccess',
             '*.html',
             'views/{,*/}*.html',
-            'images/{,*/}*.{webp}',
+            'images/{,*/}*',
             'styles/fonts/{,*/}*.*'
           ]
         }, {
@@ -427,7 +430,7 @@ module.exports = function (grunt) {
       ],
       dist: [
         'compass:dist',
-        'imagemin',
+        // 'imagemin',
         'svgmin'
       ]
     },
@@ -496,7 +499,7 @@ module.exports = function (grunt) {
     'build'
   ]);
 
+  grunt.registerTask('heroku:production', 'build');
+
   grunt.loadNpmTasks('grunt-connect-proxy');
-
 };
-

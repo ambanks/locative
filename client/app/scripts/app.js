@@ -17,7 +17,10 @@ angular
     'ui.router',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'uiGmapgoogle-maps',
+    'leaflet-directive'
+
   ])
   
 .config(function ($httpProvider, $stateProvider, $urlRouterProvider) {

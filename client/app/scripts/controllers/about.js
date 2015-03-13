@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name clientApp.controller:AboutCtrl
+ * @name locativeApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the clientApp
+ * Controller of the locativeApp
  */
- 
+
 angular.module('locativeApp')
   .controller('AboutCtrl', function ($scope) {
     $scope.awesomeThings = [

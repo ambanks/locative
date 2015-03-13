@@ -57,7 +57,7 @@ module Instagram
           current_journey = @current_user.journeys.create(
           name: "New Journey",
           date: Time.at(post['created_time'].to_i).strftime("%A, %B %d, %Y"))
-          add_post_to_journey(current_journey, post)
+          add_post_to_journey(@current_journey, post)
         when post['tags'].include?('locative')
           add_post_to_journey(current_journey, post)
         when post['tags'].include?('locativeend')
