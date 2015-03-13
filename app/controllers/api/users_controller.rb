@@ -38,6 +38,6 @@ class Api::UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :instagram_id)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :instagram_name)
     end
 end

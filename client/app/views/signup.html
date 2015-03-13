@@ -13,12 +13,13 @@
              ng-minlength="1"
              ng-maxlength="40"
              required>
-      <div ng-messages="registrationForm.name.$error">
+      <div ng-messages="signUpForm.name.$error">
         <div class="text-danger" ng-message="required">You forgot to enter your name...</div>
         <div class="text-danger" ng-message="minlength">Needs to have at least one letter...</div>
         <div class="text-danger" ng-message="maxlength">Your name is too long...</div>
       </div>
     </div>
+
     <div class="form-group">
       <input type="email"
              name="email"
@@ -28,7 +29,7 @@
              ng-minlength="5"
              ng-maxlength="40"
              required>
-      <div ng-messages="registrationForm.email.$error">
+      <div ng-messages="signUpForm.email.$error">
         <div class="text-danger" ng-message="required">You forgot to enter your email address...</div>
         <div class="text-danger" ng-message="minlength">Your email address is too short...</div>
         <div class="text-danger" ng-message="maxlength">Your email address is too long...</div>
@@ -50,9 +51,41 @@
         <div class="text-danger" ng-message="minlength">Your password is too short...</div>
         <div class="text-danger" ng-message="maxlength">Your password is too long...</div>
     </div>
+
+    <div class="form-group">
+      <input type="password"
+             name="password-confirmation"
+             class="form-control"
+             placeholder="Confirm Password"
+             ng-model="user['password_confirmation']"
+             ng-minlength="6"
+             ng-maxlength="20"
+             required>
+      <div ng-messages="registrationForm.password.$error">
+        <div class="text-danger" ng-message="required">You forgot to enter your password address...</div>
+        <div class="text-danger" ng-message="minlength">Your password is too short...</div>
+        <div class="text-danger" ng-message="maxlength">Your password is too long...</div>
+    </div>
+
+    <div class="form-group">
+      <input type="text"
+             name="name"
+             class="form-control"
+             placeholder="Name on Instagram"
+             ng-model="user['instagram_name']"
+             ng-minlength="1"
+             ng-maxlength="40"
+             required>
+      <div ng-messages="signUpForm.name.$error">
+        <div class="text-danger" ng-message="required">You forgot to enter your name...</div>
+        <div class="text-danger" ng-message="minlength">Needs to have at least one letter...</div>
+        <div class="text-danger" ng-message="maxlength">Your name is too long...</div>
+      </div>
+    </div>
+
     <button type="submit"
             class="btn btn-primary"
-            ng-disabled="registrationForm.$invalid">Sign Up</button>
+            ng-disabled="signUpForm.$invalid">Sign Up</button>
   </form>
 </div>
 

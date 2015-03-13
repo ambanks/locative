@@ -33,7 +33,6 @@
             </button>
 
             <a class="navbar-brand" ui-href="home">locative</a>
-            <!-- <a class="navbar-brand" ng-model="currentUser" href="#/">{{ currentUser.name }}</a> -->
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
@@ -53,7 +52,7 @@
                 <a href="#/">{{ user ? user.email : '' }}</a>
               </li>
               <li ng-show="isAuthenticated()">
-                <a ng-click="signOut()">Sign Out</a>
+                <a href="#/" ng-click="signOut()">Sign Out</a>
               </li>
             </ul>
           </div>
