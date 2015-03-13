@@ -1,0 +1,52 @@
+<div class="login">
+  <div class="page-header">
+    <h1>Sign In</h1>
+  </div>
+
+  <form name="signInForm" ng-submit="signIn()" novalidate>
+    <div class="form-group">
+      <input type="email"
+             name="email"
+             class="form-control"
+             placeholder="Email"
+             ng-model="session.email"
+             required>
+    </div>
+    <div class="form-group">
+      <input type="password"
+             name="password"
+             class="form-control"
+             placeholder="Password"
+             ng-model="session.password"
+             required>
+    </div>
+    <button type="submit"
+            class="btn btn-primary"
+            ng-disabled="loginForm.$invalid">Sign In</button>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!--  <form id="log-in-form" ng-submit="login(credentials)">
+    <label>Sign In</label>
+    <input type="email" placeholder="email" ng-model="credentials.email">
+    <input type="text" placeholder="password" ng-model="credentials.password">
+    <input type="submit">
+  </form>
+  <button ng-click="logout()">Sign Out</button>
+ -->
