@@ -1,4 +1,3 @@
-# SessionsController
 class Api::SessionsController < ApplicationController
   
   def index

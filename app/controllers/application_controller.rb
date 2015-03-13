@@ -5,16 +5,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :null_session, only: Proc.new { |c| c.request.format.json? }
   
-  # protect_from_forgery with: :null_session
-  # skip_before_action :verify_authenticity_token, if: :json_request?
-
   include SessionsHelper
-
-  # protected
-
-  # def json_request?
-  #   request.format.json?
-  # end
 
   private
 
