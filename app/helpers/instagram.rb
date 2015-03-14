@@ -1,22 +1,25 @@
 module Instagram
   @access_token = "295738699.1fb234f.fda44f9e854f4083acc3b024e883aeaa"
-  # @tags_json = Hash.new
-
   @user_posts = Hash.new
   @current_user = User.new
   @locative_posts = Array.new
  
-  # TODO method to get a new user's Instagram id number
-  # user search url, for finding a user's id:
-  # https://api.instagram.com/v1/users/search?q=jack&access_token=ACCESS-TOKEN
+  def self.get_user_id(user)
+    user_profile = HTTParty.get("https://api.instagram.com/v1/users/search?q=#{user.instagram_name}&access_token=#{@access_token}")
+    user.update_attribute(:instagram_id, user_profile['data'][0]['id'].to_i)
+  end
 
-  # Alternate Approach:
+  # def self.test_user_id(user)
+  #   user_profile = HTTParty.get("https://api.instagram.com/v1/users/search?q=#{user.instagram_name}&access_token=#{@access_token}")
+  #   return user_profile['data'][0]['id'].to_i
+  #   # user.instagram_id = user_profile['data'][0]['id'].to_i
+  # end
 
   def self.get(user)
     get_user_posts(user).collect_new_locative.make_journeys
   end
 
-    def self.test(user)
+  def self.test(user)
     get_user_posts(user).collect_new_locative
     return @locative_posts
   end
@@ -99,42 +102,6 @@ module Instagram
       date: Time.at(post['created_time'].to_i).strftime("%A, %B %d, %Y"))
       return @current_user.journeys.last
   end
-
-
-  # def self.get_locative
-  #   tags = ['locativego', 'locative', 'locativeend']
-  #   tags.each do |tag|
-  #     @tags_json[tag] = HTTParty.get("https://api.instagram.com/v1/tags/#{tag}/media/recent?access_token=#{@access_token}")
-  #   end
-  #   return self
-  # end
-
-  # def self.get_locative_for_testing
-  #   tags = ['locativego', 'locative', 'locativeend']
-  #   tags.each do |tag|
-  #     @tags_json[tag] = HTTParty.get("https://api.instagram.com/v1/tags/#{tag}/media/recent?access_token=#{@access_token}")
-  #   end
-  #   return @tags_json
-  # end
-
-  # def self.collect_user_posts(user)
-  #   @current_user = user
-  #   @user_posts = []
-  #   ig_ids = @current_user.posts.collect { |post| post.instagram_id }
-
-  #   @tags_json.each do |tag, hash|
-  #     hash['data'].each do |post|
-  #       if post['user']['id'] == @current_user.instagram_id.to_s
-  #         @user_posts << post unless ig_ids.include?(post['id'])
-  #       end
-  #     end
-  #     # TODO Add logic to continue searches if nothing found
-  #   end
-
-  #   return self
-  # end
   
-  
-
 end
 
