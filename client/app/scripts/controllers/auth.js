@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('locativeApp')
-.controller('AuthCtrl', function ($scope, $rootScope, $state, AuthService) {
+.controller('AuthCtrl', ['$scope', '$rootScope', '$state', 'AuthService', function ($scope, $rootScope, $state, AuthService) {
   
   $scope.signUp = function() {
     console.log('AuthCtrl.signUp');
@@ -30,4 +30,4 @@ angular.module('locativeApp')
     });
   };
 
-});
+}]);

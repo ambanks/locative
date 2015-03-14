@@ -23,7 +23,7 @@ angular
 
   ])
   
-.config(function ($httpProvider, $stateProvider, $urlRouterProvider) {
+.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', function ($httpProvider, $stateProvider, $urlRouterProvider) {
 
   $httpProvider.defaults.withCredentials = true;
 
@@ -60,7 +60,7 @@ angular
     });
 
     $urlRouterProvider.otherwise('home');
-  });
+  }]);
 
 
   // Groups routing from lunch hub. Provides an example of 

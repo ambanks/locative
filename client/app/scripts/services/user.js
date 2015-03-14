@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('locativeApp')
-.service('UserService', function($http) {
+.service('UserService', ['$http', function($http) {
 
   this.getUsers = function() {
     return $http.get('/api/users');
@@ -25,4 +25,4 @@ angular.module('locativeApp')
     return $http.delete('/api/users/' + user.id);
   };
 
-});
+}]);

@@ -2,7 +2,8 @@
 
 angular.module('locativeApp')
 
-.controller('NavCtrl', function ($scope, $rootScope, $state, $browser, AuthService) {
+.controller('NavCtrl', ['$scope', '$rootScope', '$state', '$browser', 'AuthService', 
+              function ($scope, $rootScope, $state, $browser, AuthService) {
 
   $scope.tabs = [
     { state: 'home',     label: 'Home',        active: true,  isPublic: true  },
@@ -58,4 +59,4 @@ angular.module('locativeApp')
     $scope.user = null;
     $state.go('home');
   });
-});
+}]);
