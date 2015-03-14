@@ -45,8 +45,37 @@ angular
     })
     .state('users.detail', {
       url: '/{userId:[0-9]{1,4}}', 
-      templateUrl: 'views/user.html',
-      controller: 'UserCtrl'
+      templateUrl: 'views/users.detail.html', 
+      controller: 'UseCtrl'
+
+
+
+      // function($scope, $stateParams) {
+      //       $scope.user = $scope.getUserById($stateParams.userId);
+      //   } 
+
+
+
+
+        // function ($scope, $stateParams) {
+        //   $scope.user = UserCtrl.getUserById($stateParams.usedId);
+        // }
+      
+
+
+
+      // views:
+      //   '': {
+      //     templateUrl: 'views/user.html',
+      //     controller: ['$scope', '$stateParams', 'utils',
+
+      //       function (  $scope,   $stateParams,   utils) {
+      //         $scope.contact = utils.findById($scope.contacts, $stateParams.contactId);
+      //       }]
+      //   },
+
+
+
     })
     .state('signup', {
       url: '/signup', 

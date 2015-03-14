@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('locativeApp')
-.controller('UserCtrl', function($scope, UserService) {
+.controller('UserCtrl', function($scope, $stateParams, UserService) {
 
   function getUsers() {
     UserService.getUsers()
@@ -15,7 +15,32 @@ angular.module('locativeApp')
 
   getUsers();
 
-  $scope.getUser = function(user) {
+  $scope.getUserById = function(id) {
+    UserService.getUserById(id)
+    .success(function(data) {
+      console.log(data);
+      // $scope.user = data;
+      return data;
+    })
+    .error(function(/* data, status, headers, config */) {
+      alert('GET: error');
+    });
+  };
+
+
+
+
+  // function getUserById(id) {
+  //   UserService.getUserById(id)
+  //   .success(function(data) {
+  //     $scope.user = data;
+  //   })
+  //   .error(function(/* data, status, headers, config */) {
+  //     alert('GET: error');
+  //   });
+  // }
+
+  function getUser(user) {
     UserService.getUser(user)
     .success(function(data) {
       $scope.user = data;
@@ -23,7 +48,16 @@ angular.module('locativeApp')
     .error(function(/* data, status, headers, config */) {
       alert('GET: error');
     });
-  };
+  }
+
+  // getUser($stateParams);
+
+
+  // $scope.
+  //   function (  $scope,   $stateParams,   utils) {
+  //     $scope.user = getUser($scope.contacts, $stateParams.contactId);
+  //   }]
+
 
   // $scope.getUser();
 
