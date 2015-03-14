@@ -43,8 +43,8 @@ angular
       templateUrl: 'views/users.html',
       controller: 'UserCtrl'
     })
-    .state('user', {
-      url: '/users/:userId', 
+    .state('users.detail', {
+      url: '/{userId:[0-9]{1,4}}', 
       templateUrl: 'views/user.html',
       controller: 'UserCtrl'
     })
