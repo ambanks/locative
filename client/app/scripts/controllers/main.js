@@ -146,5 +146,3 @@ angular.module('locativeApp')
       });
     });
   }]);
-
-
