@@ -8,7 +8,11 @@
  */
 angular.module('locativeApp')
   .controller('MainCtrl', function ($scope, $http, leafletData) {
-
+    $scope.awesomeThings = [
+      'HTML5 Boilerplate',
+      'AngularJS',
+      'Karma'
+    ];
     angular.extend($scope, {
                 markers: [],
                 bounds: {},

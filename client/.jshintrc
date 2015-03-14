@@ -19,7 +19,7 @@
   "smarttabs": true,
   "globals": {
     "angular": false,
-    "alert": false,g
+    "alert": false,
     "google": false,
     "_": false
   }
