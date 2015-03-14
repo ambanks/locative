@@ -3,7 +3,7 @@
     <h1>Sign In</h1>
   </div>
 
-  <form name="signInForm" ng-submit="signIn()" novalidate>
+  <form class="signin-form" name="signInForm" ng-submit="signIn()" novalidate>
     <div class="form-group">
       <input type="email"
              name="email"
@@ -11,7 +11,6 @@
              placeholder="Email"
              ng-model="session.email"
              required>
-    </div>
     <div class="form-group">
       <input type="password"
              name="password"
@@ -20,12 +19,11 @@
              ng-model="session.password"
              required>
     </div>
-    <button type="submit"
-            class="btn btn-primary"
+    <button class="sign-in"
             ng-disabled="loginForm.$invalid">Sign In</button>
+    <p>Don't have an account?<a href='#/signup'>Sign Up!</p>
   </form>
 </div>
-
 
 
 
