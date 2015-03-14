@@ -23,7 +23,8 @@ angular
 
   ])
   
-.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', function ($httpProvider, $stateProvider, $urlRouterProvider) {
+.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', 
+  function ($httpProvider, $stateProvider, $urlRouterProvider) {
 
   $httpProvider.defaults.withCredentials = true;
 
@@ -60,6 +61,7 @@ angular
     });
 
     $urlRouterProvider.otherwise('home');
+    
   }]);
 
 

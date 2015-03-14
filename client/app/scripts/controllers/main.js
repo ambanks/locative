@@ -7,7 +7,9 @@
  * Controller of the locativeApp
  */
 angular.module('locativeApp')
-  .controller('MainCtrl', ['$scope', '$http', 'leafletData', function ($scope, $http, leafletData) {
+  .controller('MainCtrl', 
+    ['$scope', '$http', 'leafletData', 
+    function ($scope, $http, leafletData) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

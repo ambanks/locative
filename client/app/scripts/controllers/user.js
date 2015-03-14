@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('locativeApp')
-.controller('UserCtrl', ['$scope', 'UserService', function($scope, UserService) {
+.controller('UserCtrl', ['$scope', 'UserService', function ($scope, UserService) {
 
   function getUsers() {
     UserService.getUsers()
