@@ -20,7 +20,6 @@ angular
     'ngTouch',
     'uiGmapgoogle-maps',
     'leaflet-directive'
-
   ])
   
 .config(['$httpProvider', '$stateProvider', '$urlRouterProvider', 
@@ -61,7 +60,7 @@ angular
     });
 
     $urlRouterProvider.otherwise('home');
-    
+
   }]);
 
 
