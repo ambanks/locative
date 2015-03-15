@@ -40,15 +40,15 @@ angular.module('locativeApp')
   //   });
   // }
 
-  function getUser(user) {
-    UserService.getUser(user)
-    .success(function(data) {
-      $scope.user = data;
-    })
-    .error(function(/* data, status, headers, config */) {
-      alert('GET: error');
-    });
-  }
+  // function getUser(user) {
+  //   UserService.getUser(user)
+  //   .success(function(data) {
+  //     $scope.user = data;
+  //   })
+  //   .error(function(/* data, status, headers, config */) {
+  //     alert('GET: error');
+  //   });
+  // }
 
   // getUser($stateParams);
 

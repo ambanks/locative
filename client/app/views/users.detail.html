@@ -1,5 +1,11 @@
 <!-- Not working. Needs appropriate route & controller. -->
 <h2>{{ user.name }}</h2>
 <h3>{{ user.email }}</h3>
+<h1 ng-repeat="journey in journeys">
+<a ui-sref="journeys.detail({journeyId: journey.id})">{{ journey.name }}</a></h1>
+
+<button ng-click="logUser()">User?</button>
+<button ng-click="logJourneys()">Journeys?</button>
+
 <div ui-view=""></div>
 

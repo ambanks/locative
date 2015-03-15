@@ -6,7 +6,7 @@ angular.module('locativeApp')
 
   $scope.tabs = [
     { state: 'home',     label: 'Home',        active: true,  isPublic: true  },
-    { state: 'user',     label: 'My Journeys', active: false, isPublic: false },
+    { state: 'user',      label: 'My Journeys', active: false, isPublic: false },
     { state: 'about',    label: 'About',       active: false, isPublic: true  },
   ];
 
