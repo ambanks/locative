@@ -25,10 +25,25 @@ angular.module('locativeApp')
     });
   }
 
+  function getUserJourney(userId, journeyId) {
+    UserService.getUserJourney(userId, journeyId)
+    .success(function(data) {
+      console.log(JSON.stringify(data));
+      $scope.journey = data['journey']; 
+      $scope.posts = data['posts'];
+    })
+    .error(function(/* data, status, headers, config */) {
+      alert('GET: error');
+    });
+
+  }
+
   function checkState(stateName) {
     if (stateName === 'user') {
       getUserById($stateParams.userId);
-    } else {  
+    } else if (stateName === 'user.journey') {
+      getUserJourney($stateParams.userId, $stateParams.journeyId);
+    } else { 
       getUsers();
     }
   }
@@ -42,6 +57,8 @@ angular.module('locativeApp')
   $scope.logJourneys = function() {
     console.log($scope.journeys);
   };
+
+  console.log($state.$current.name);
 
   // $scope.getUserById = function(id) {
   //   UserService.getUserById(id)

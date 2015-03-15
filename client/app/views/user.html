@@ -3,7 +3,7 @@
 <h3>{{ user.email }}</h3>
 <ul>
 <li ng-repeat="journey in journeys">
-<a ui-sref="journey({journeyId: journey.id})">{{ journey.name }}</a></li>
+<a ui-sref="user.journey({journeyId: journey.id})">{{ journey.name }}</a></li>
 </ul>
-<div ui-view=""></div>
+<div ui-view></div>
 

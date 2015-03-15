@@ -49,18 +49,33 @@ angular
     //   controller: 'UserCtrl'
     // })
     .state('user', {
-       url: 'users/{userId:[1-9]{1,4}}',
-       templateUrl: 'views/user.html',
-       controller: 'UserCtrl',
-       resolve:   {
-         user: function($http, $stateParams){
-             var url = '/api/users/' + $stateParams.userId;
-             return $http.get(url)
-                 .then(function(res){ return res['user']; });
-                 // .then(function(res){ return res.data; });
-         }
-       }
-     })
+      url: 'users/{userId:[1-9]{1,4}}',
+      templateUrl: 'views/user.html',
+      controller: 'UserCtrl',
+      resolve:   {
+        user: function($http, $stateParams){
+            var url = '/api/users/' + $stateParams.userId;
+            return $http.get(url)
+                .then(function(response){ return response['user']; });
+                // .then(function(res){ return res.data; });
+        }
+      }
+    })
+    .state('user.journey', {
+      url: '/journeys/{journeyId:[1-9]{1,4}}',
+      templateUrl: 'views/user.journey.html',
+      controller: 'UserCtrl',
+      resolve: {
+        journey: function($http, $stateParams){
+          var url = 'api/users/' + $stateParams.userId + '/journeys/' + $stateParams.journeyId;
+          return $http.get(url)
+            .then(function(response){ return response['journey']; });
+        }
+      }
+    })
+
+
+
 
     // .state('users.detail.journeys.', {
     //   url: '/{userId:[0-9]{1,4}}', 

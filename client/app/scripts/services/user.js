@@ -7,16 +7,21 @@ angular.module('locativeApp')
     return $http.get('/api/users');
   };
 
-  this.getUser = function(user) {
-    return $http.get('/api/users/' + user.id);
-  };
-
   this.getUserById = function(id) {
     return $http.get('/api/users/' + id);
   };
 
+  this.getUserJourney = function(userId, journeyId) {
+    return $http.get('api/users/' + userId + '/journeys/' + journeyId);
+  };
+
+
   this.getUserJourneys = function(user) {
     return $http.get('api/users/' + user.id + '/journeys');
+  };
+
+  this.getUser = function(user) {
+    return $http.get('/api/users/' + user.id);
   };
 
   this.updateUser = function(user) {

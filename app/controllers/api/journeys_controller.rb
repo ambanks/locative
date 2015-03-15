@@ -1,18 +1,18 @@
 class Api::JourneysController < ApplicationController
-  before_action :set_journey, only: [:show, :update, :destroy]
+  # before_action :set_journey, only: [:show, :update, :destroy]
 
   # GET /journeys
   # GET /journeys.json
   def index
     @journeys = Journey.all
-
     render json: @journeys
   end
 
   # GET /journeys/1
   # GET /journeys/1.json
   def show
-    render json: @journey
+    journey = Journey.find(params[:id])
+    render json: { journey: journey, posts: journey.posts }
   end
 
   # POST /journeys
