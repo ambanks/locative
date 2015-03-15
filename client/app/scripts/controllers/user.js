@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('locativeApp')
-.controller('UserCtrl', function($scope, $stateParams, UserService) {
+.controller('UserCtrl', function($scope, $state, $stateParams, UserService) {
 
   function getUsers() {
     UserService.getUsers()
@@ -13,22 +13,47 @@ angular.module('locativeApp')
     });
   }
 
-  getUsers();
-
-  $scope.getUserById = function(id) {
+  function getUserById(id) {
     UserService.getUserById(id)
     .success(function(data) {
-      console.log(data);
-      // $scope.user = data;
-      return data;
+      console.log(JSON.stringify(data));
+      $scope.user = data['user']; 
+      $scope.journeys = data['journeys'];
     })
     .error(function(/* data, status, headers, config */) {
       alert('GET: error');
     });
+  }
+
+  function checkState(stateName) {
+    if (stateName === 'user') {
+      getUserById($stateParams.userId);
+    } else {  
+      getUsers();
+    }
+  }
+
+  checkState($state.$current.name);
+
+  $scope.logUser = function() {
+    console.log($scope.user);
   };
 
+  $scope.logJourneys = function() {
+    console.log($scope.journeys);
+  };
 
-
+  // $scope.getUserById = function(id) {
+  //   UserService.getUserById(id)
+  //   .success(function(data) {
+  //     console.log(data);
+  //     // $scope.user = data;
+  //     return data;
+  //   })
+  //   .error(function(/* data, status, headers, config */) {
+  //     alert('GET: error');
+  //   });
+  // };
 
   // function getUserById(id) {
   //   UserService.getUserById(id)

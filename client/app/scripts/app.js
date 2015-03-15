@@ -43,11 +43,29 @@ angular
       templateUrl: 'views/users.html',
       controller: 'UserCtrl'
     })
-    .state('users.detail', {
-      url: '/{userId:[0-9]{1,4}}', 
-      templateUrl: 'views/users.detail.html', 
-      controller: 'UseCtrl'
+    // .state('users.detail', {
+    //   url: '/{userId:[0-9]{1,4}}', 
+    //   templateUrl: 'views/users.detail.html', 
+    //   controller: 'UserCtrl'
+    // })
+    .state('user', {
+       url: 'users/{userId:[1-9]{1,4}}',
+       templateUrl: 'views/user.html',
+       controller: 'UserCtrl',
+       resolve:   {
+         user: function($http, $stateParams){
+             var url = '/api/users/' + $stateParams.userId;
+             return $http.get(url)
+                 .then(function(res){ return res['user']; });
+                 // .then(function(res){ return res.data; });
+         }
+       }
+     })
 
+    // .state('users.detail.journeys.', {
+    //   url: '/{userId:[0-9]{1,4}}', 
+    //   templateUrl: 'views/users.detail.html', 
+    //   controller: 'UseCtrl'
 
 
       // function($scope, $stateParams) {
@@ -76,7 +94,7 @@ angular
 
 
 
-    })
+    
     .state('signup', {
       url: '/signup', 
       templateUrl: 'views/signup.html',
