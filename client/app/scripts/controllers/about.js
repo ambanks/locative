@@ -50,13 +50,15 @@ function parallax(){
   }
  }
 
+
 // FADE-IN BOX
- $(document).ready(function() {
+$(document).ready(function() {
   var element = document.getElementById('js-fadeInElement');
   $(element).addClass('js-fade-element-hide');
 
   $(window).scroll(function() {
     if( $('#js-fadeInElement').length > 0 ) {
+      var element = document.getElementById('js-fadeInElement');
       var elementTopToPageTop = $(element).offset().top;
       var windowTopToPageTop = $(window).scrollTop();
       var windowInnerHeight = window.innerHeight;
