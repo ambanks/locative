@@ -25,11 +25,12 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-        <header class="navigation" role="navigation" ng-controller="NavCtrl">
+    <header class="navigation" role="banner" ng-controller="NavCtrl">
       <div class="navigation-wrapper">
         <a href="javascript:void(0)" class="logo" ui-href="home">
          <img src="images/locative_white.png" alt="Logo Image">
         </a>
+
         <nav role="navigation">
           <ul id="js-navigation-menu" class="navigation-menu show">
             <li class="nav-link"
@@ -45,11 +46,9 @@
             </li>
           </ul>
         </nav>
+      <a ng-hide="isAuthenticated()" ui-sref="signup" class="sign-up">Sign Up</a>
+      <a ng-hide="isAuthenticated()" ui-sref="signin" class="sign-in">Sign In</a>
       </div> 
-      <div>
-        <a ng-hide="isAuthenticated()" ui-sref="signup" class="sign-up">Sign Up</a>
-        <a ng-hide="isAuthenticated()" ui-sref="signin" class="sign-in">Sign In</a>
-      </div>
     </header>
 
     <div ui-view=""></div>
