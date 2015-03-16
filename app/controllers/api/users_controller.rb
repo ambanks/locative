@@ -14,8 +14,9 @@ class Api::UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
-      sign_in user
       Instagram.get_user_id(user)
+      sign_in user
+      Instagram.get_posts(user)
       render json: user, status: 201, location: [:api, user]
     else
       render json: { errors: user.errors }, status: 422
