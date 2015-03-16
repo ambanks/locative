@@ -26,7 +26,7 @@
         <span editable-text="journey.date" e-name="date" e-required>{{ journey.date || 'empty' }}</span>
       </div> 
       <!-- button to show form -->
-      <div class="buttons">
+      <div ng-show="isAuthorized()">
           <!-- button to show form -->
         <button type="button" ng-click="journeyForm.$show()" ng-show="!journeyForm.$visible"> Edit </button>
         <!-- buttons to submit / cancel form -->
