@@ -30,7 +30,7 @@ angular
     .state('home', {
       url: '/',
       templateUrl: 'views/main.html',
-      controller: 'MainCtrl'
+      controller: 'MapCtrl'
     })
     .state('about', {
       url: '/about',

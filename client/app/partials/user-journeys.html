@@ -13,10 +13,42 @@
 <h1>This is the journeys page!</h1>
   <div ng-hide="journeysNil">
   <h1 ng-model="user.name">{{user.name}}'s Journeys</h1> 
-    <ul>
-      <li ng-repeat="journey in journeys">
-        <a ui-sref="user.journey({journeyId: journey.id})">{{ journey.name }}</a>
-        <a ui-sref="#"
+
+    <div ng-repeat="journey in journeys" ng-controller="FormCtrl">
+      <form editable-form name="journeyForm" onaftersave="updateJourney(journey)">
+      <!-- <a ui-sref="user.journey({journeyId: journey.id})">{{ journey.name }}</a> -->
+      <div>
+        <a ui-sref="user.journey({journeyId: journey.id})">
+          <span editable-text="journey.name" e-name="name" e-required>{{ journey.name || 'empty' }}</span>
+        </a>  
+      </div> 
+      <div>
+        <span editable-text="journey.date" e-name="date" e-required>{{ journey.date || 'empty' }}</span>
+      </div> 
+      <!-- button to show form -->
+      <div class="buttons">
+          <!-- button to show form -->
+        <button type="button" ng-click="journeyForm.$show()" ng-show="!journeyForm.$visible"> Edit </button>
+        <!-- buttons to submit / cancel form -->
+        <span ng-show="journeyForm.$visible">
+          <button type="submit" ng-disabled="journeyForm.$waiting">
+            Save
+          </button>
+          <button type="button" ng-disabled="journeyForm.$waiting" ng-click="destroyJourney(journey)">
+            Delete
+          </button>
+          <button type="button" ng-disabled="journeyForm.$waiting" ng-click="journeyForm.$cancel()">
+            Cancel
+          </button>
+        </span>
+      </div>
+      </form> 
+    </div> 
+
+
+
+
+  <!--       <a ui-sref="#"
            editable-text="journey.date"
            onaftersave="updateJourney()">{{ journey.date }}</a>
         <button type="button" 
@@ -31,10 +63,11 @@
                 ng-model="journey.name"
                 placeholder:"{{ journey.name }}"
                 onaftersave="updateJourney()"
-                onaftersave="stopEditing()">
-      </li>
-    </ul>
-  </div>
+                onaftersave="stopEditing()"
+        </form> -->
+
+      </div>
+
   <div  class="new-user no-journeys" 
         ng-show="journeysNil">
     <h1 style="text-align: center;"><strong>#locativeGo!</strong></h1>
@@ -48,4 +81,6 @@
     <h2 style="text-align: center;"><strong>#locativeGo!</strong></h2>
   </div>
   </ui-view>
+
+
 <!-- </div> -->

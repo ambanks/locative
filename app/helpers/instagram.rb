@@ -37,7 +37,9 @@ module Instagram
     tags.each do |tag|
       @user_posts['data'].each do |post| 
         if post['tags'].include?(tag)
-          @locative_posts << post unless old_ig_ids.include?(post['id']) || post['type'] == 'video'
+          unless old_ig_ids.include?(post['id']) || post['type'] == 'video'  
+            @locative_posts << post 
+          end
         end
       end
     end
@@ -48,6 +50,7 @@ module Instagram
     @locative_posts.sort_by! { |post| post['created_time'] }
     unless @locative_posts.empty?
       @locative_posts.each do |post|
+
         case 
         when post['tags'].include?('locativego')
           if new_user?
