@@ -42,6 +42,7 @@ class Api::JourneysController < ApplicationController
   # DELETE /journeys/1
   # DELETE /journeys/1.json
   def destroy
+    @journey = Journey.find(params[:id])
     @journey.destroy
 
     head :no_content

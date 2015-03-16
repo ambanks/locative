@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name locativeApp
- * @description
- * # locativeApp
- *
- * Main module of the application.
- */
 angular
   .module('locativeApp', [
     'ngAnimate',
@@ -43,11 +35,6 @@ angular
       templateUrl: 'views/users.html',
       controller: 'UserCtrl'
     })
-    // .state('users.detail', {
-    //   url: '/{userId:[0-9]{1,4}}', 
-    //   templateUrl: 'views/users.detail.html', 
-    //   controller: 'UserCtrl'
-    // })
     .state('user', {
       url: 'users/{userId:[1-9]{1,4}}',
       templateUrl: 'views/user.html',
@@ -57,7 +44,6 @@ angular
             var url = '/api/users/' + $stateParams.userId;
             return $http.get(url)
                 .then(function(response){ return response['user']; });
-                // .then(function(res){ return res.data; });
         }
       }
     })
@@ -69,47 +55,10 @@ angular
         journey: function($http, $stateParams){
           var url = 'api/users/' + $stateParams.userId + '/journeys/' + $stateParams.journeyId;
           return $http.get(url)
-            .then(function(response){ return response['journey']; });
+            .then(function(response){ return response['journeys']; });
         }
       }
-    })
-
-
-
-
-    // .state('users.detail.journeys.', {
-    //   url: '/{userId:[0-9]{1,4}}', 
-    //   templateUrl: 'views/users.detail.html', 
-    //   controller: 'UseCtrl'
-
-
-      // function($scope, $stateParams) {
-      //       $scope.user = $scope.getUserById($stateParams.userId);
-      //   } 
-
-
-
-
-        // function ($scope, $stateParams) {
-        //   $scope.user = UserCtrl.getUserById($stateParams.usedId);
-        // }
-      
-
-
-
-      // views:
-      //   '': {
-      //     templateUrl: 'views/user.html',
-      //     controller: ['$scope', '$stateParams', 'utils',
-
-      //       function (  $scope,   $stateParams,   utils) {
-      //         $scope.contact = utils.findById($scope.contacts, $stateParams.contactId);
-      //       }]
-      //   },
-
-
-
-    
+    })   
     .state('signup', {
       url: '/signup', 
       templateUrl: 'views/signup.html',
@@ -120,7 +69,6 @@ angular
       templateUrl: 'views/signin.html',
       controller: 'AuthCtrl'
     });
-
     $urlRouterProvider.otherwise('home');
   });
 
