@@ -38,7 +38,7 @@ angular
     })
     .state('user', {
       url: 'users/{userId:[1-9]{1,4}}',
-      templateUrl: 'views/user.html',
+      templateUrl: 'partials/user-journeys.html',
       controller: 'UserCtrl',
       resolve:   {
         user: function($http, $stateParams){
@@ -50,7 +50,7 @@ angular
     })
     .state('user.journey', {
       url: '/journeys/{journeyId:[1-9]{1,4}}',
-      templateUrl: 'views/user.journey.html',
+      templateUrl: 'partials/user-posts.html',
       controller: 'UserCtrl',
       resolve: {
         journey: function($http, $stateParams){

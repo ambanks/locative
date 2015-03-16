@@ -1,13 +1,12 @@
-<!-- <div ng-controller="JourneyCtrl"> -->
- <ui-view>
-        <i>Some content will load here!</i>
+<ui-view>
+  <i>Some content will load here!</i>
 
 <h1>This is the journeys page!</h1>
   <div ng-hide="journeysNil">
   <h1 ng-model="user.name">{{user.name}}'s Journeys</h1> 
     <ul>
       <li ng-repeat="journey in journeys">
-        <a ui-sref="journey({ id: journey.id })" ng-click="getJourney(user, journey)">{{ journey.name }}</a>
+         <a ui-sref="user.journey({journeyId: journey.id})">{{ journey.name }}</a>
         <a ui-sref="#"
            editable-text="journey.date"
            onaftersave="updateJourney()">{{ journey.date }}</a>
