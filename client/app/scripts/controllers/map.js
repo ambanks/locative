@@ -7,68 +7,70 @@
  * Controller of the locativeApp
  */
 angular.module('locativeApp')
-  .controller('MainCtrl', 
-    ['$scope', '$http', 'leafletData', 
-    function ($scope, $http, leafletData) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MapCtrl', ['$scope', '$http', 'leafletData', function ($scope, $http, leafletData) {
     angular.extend($scope, {
                 markers: [],
                 bounds: {},
                 center: {},
                 layers: {
                   baselayers: {
-                    osm: {
-                      name: 'StreetMap',
+                    street: {
+                      name: 'Streets',
                       type: 'xyz',
-                      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+                      url: 'https://{s}.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?secure&access_token=pk.eyJ1IjoiYmVubmV0dGF0b21zIiwiYSI6Ik1Td09jOUkifQ.2_RXTxWsYP_YjQI66y4kkg',
                       layerOptions: {
                         subdomains: ['a', 'b', 'c'],
-                        attribution: '&copy; <a href="http://osm.org/copyright" target="_blank">OpenStreetMap</a> contributors',
+                        attribution: '&copy; <a href="https://www.mapbox.com/about/maps/" target="_blank">Mapbox © OpenStreetMap</a> | <a href="https://www.mapbox.com/map-feedback/">Improve this map</a>',
                         continuousWorld: true
                       }
                     },
-                    cycle: {
+                    satellite_street: {
                       name: 'Satellite',
                       type: 'xyz',
-                      url: 'http://otile1.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg',
+                      url: 'https://{s}.tiles.mapbox.com/v4/mapbox.streets-satellite/{z}/{x}/{y}.png?secure&access_token=pk.eyJ1IjoiYmVubmV0dGF0b21zIiwiYSI6Ik1Td09jOUkifQ.2_RXTxWsYP_YjQI66y4kkg',
                       layerOptions: {
                         subdomains: ['a', 'b', 'c'],
-                        attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.creativecommons/content/osm/mq_logo.png"',
-                        continuousWorld: true
-                      }
-                    },
-                    toner: {
-                      name: 'Toner',
-                      type: 'xyz',
-                      url: 'http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png',
-                      layerOptions: {
-                        attribution: 'Map tiles by <a href="http://stamen.com" target="_blank">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0" target="_blank">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org" target="_blank">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright" target="_blank">ODbL</a>.',
+                        attribution: '&copy; <a href="https://www.mapbox.com/about/maps/" target="_blank">Mapbox © OpenStreetMap</a> | <a href="https://www.mapbox.com/map-feedback/">Improve this map</a>',
                         continuousWorld: true
                       }
                     },
                     terrain: {
-                      name: 'Terrain',
+                      name: 'Run/Bike/Hike',
                       type: 'xyz',
-                      url: 'http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.png',
+                      url: 'https://{s}.tiles.mapbox.com/v4/mapbox.run-bike-hike/{z}/{x}/{y}.png?secure&access_token=pk.eyJ1IjoiYmVubmV0dGF0b21zIiwiYSI6Ik1Td09jOUkifQ.2_RXTxWsYP_YjQI66y4kkg',
                       layerOptions: {
-                        attribution: 'Map tiles by <a href="http://stamen.com" target="_blank">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0" target="_blank">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org" target="_blank">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_blank">CC BY SA</a>.',
+                        attribution: '&copy; <a href="https://www.mapbox.com/about/maps/" target="_blank">Mapbox © OpenStreetMap</a> | <a href="https://www.mapbox.com/map-feedback/">Improve this map</a>',
+                        continuousWorld: true
+                      }
+                    },
+                    toner: {
+                      name: 'Black/White',
+                      type: 'xyz',
+                      url: 'https://{s}.tiles.mapbox.com/v4/mapbox.high-contrast/{z}/{x}/{y}.png?secure&access_token=pk.eyJ1IjoiYmVubmV0dGF0b21zIiwiYSI6Ik1Td09jOUkifQ.2_RXTxWsYP_YjQI66y4kkg',
+                      layerOptions: {
+                        attribution: '&copy; <a href="https://www.mapbox.com/about/maps/" target="_blank">Mapbox © OpenStreetMap</a> | <a href="https://www.mapbox.com/map-feedback/">Improve this map</a>',
+                        continuousWorld: true
+                      }
+                    },
+                    comic: {
+                      name: 'ComicBook',
+                      type: 'xyz',
+                      url: 'https://{s}.tiles.mapbox.com/v4/mapbox.comic/{z}/{x}/{y}.png?secure&access_token=pk.eyJ1IjoiYmVubmV0dGF0b21zIiwiYSI6Ik1Td09jOUkifQ.2_RXTxWsYP_YjQI66y4kkg',
+                      layerOptions: {
+                        attribution: '&copy; <a href="https://www.mapbox.com/about/maps/" target="_blank">Mapbox © OpenStreetMap</a> | <a href="https://www.mapbox.com/map-feedback/">Improve this map</a>',
                         continuousWorld: true
                       }
                     }
                   },
                   overlays: {
-                    watercolor: {
-                      name: 'Watercolor',
+                    wheatpaste: {
+                      name: 'Wheatpaste',
                       type: 'xyz',
-                      url: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png',
+                      url: 'https://{s}.tiles.mapbox.com/v4/mapbox.wheatpaste/{z}/{x}/{y}.png?secure&access_token=pk.eyJ1IjoiYmVubmV0dGF0b21zIiwiYSI6Ik1Td09jOUkifQ.2_RXTxWsYP_YjQI66y4kkg',
                       layerOptions: {
                         visible: true,
-                        opacity: 0.5, 
-                        attribution: 'Map tiles by <a href="http://stamen.com" target="_blank">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0" target="_blank">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org" target="_blank">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0" target="_blank">CC BY SA</a>.',
+                        opacity: 0.4, 
+                        attribution: '&copy; <a href="https://www.mapbox.com/about/maps/" target="_blank">Mapbox © OpenStreetMap</a> | <a href="https://www.mapbox.com/map-feedback/">Improve this map</a>',
                         continuousWorld: true
                       }
                     }
@@ -146,5 +148,6 @@ angular.module('locativeApp')
       });
     });
   }]);
+
 
 

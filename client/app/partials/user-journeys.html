@@ -1,10 +1,13 @@
-<h1>I am the journeys section</h1>
-<div ng-controller="JourneyCtrl">
+<!-- <div ng-controller="JourneyCtrl"> -->
+ <ui-view>
+        <i>Some content will load here!</i>
+
+<h1>This is the journeys page!</h1>
   <div ng-hide="journeysNil">
   <h1 ng-model="user.name">{{user.name}}'s Journeys</h1> 
     <ul>
       <li ng-repeat="journey in journeys">
-        <a ui-sref="users.indiv({ userId: user.id })" ng-click="getJourney(user.indiv, journey)">{{ journey.name }}</a>
+        <a ui-sref="journey({ id: journey.id })" ng-click="getJourney(user, journey)">{{ journey.name }}</a>
         <a ui-sref="#"
            editable-text="journey.date"
            onaftersave="updateJourney()">{{ journey.date }}</a>
@@ -24,8 +27,8 @@
       </li>
     </ul>
   </div>
-  <div class="new-user no-journeys" 
-       ng-show="journeysNil">
+  <div  class="new-user no-journeys" 
+        ng-show="journeysNil">
     <h1 style="text-align: center;"><strong>#locativeGo!</strong></h1>
     <br>
     <h2 ng-model="user.name" 
@@ -36,26 +39,5 @@
     <br>
     <h2 style="text-align: center;"><strong>#locativeGo!</strong></h2>
   </div>
-
-  <h1>I am the posts section</h1>
-  <div ng-controller="PostCtrl">
-    <ul>
-      <li ng-repeat="post in posts">
-        <a img ng-src="{{ post.lowResImg }}"></a>
-        <a href="#"
-           editable-text="post.caption"
-           onaftersave="updatePost()">{{ post.caption || '' }}</a>
-      </li>
-    </ul>
-  </div>
-</div>
-<h1>I am the map section</h1>
-<div ng-controller="MapCtrl">
-  <div class = "row" style="display: inline;">
-    <button ng-click="showRoute()" id="directions-button" style="height: 50px; width: 80px; margin-bottom: 10px; border-radius: 10px">Show Route</button>
-    <button ng-click="hideRoute()" id="directions-button" style="height: 50px; width: 80px; margin-left: 5%; margin-bottom: 10px; border-radius: 10px">Hide Route</button>
-  </div>  
-  <br>
-
-  <leaflet width="800px" height="600px" markers="markers" center="center" bounds="bounds" layers="layers"></leaflet>
-</div>
+  </ui-view>
+<!-- </div> -->
