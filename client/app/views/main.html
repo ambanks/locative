@@ -1,32 +1,31 @@
 <div ng-controller="MainCtrl">
-<h1>Locative</h1>
-  <div class= "row" style="display: inline;">
-    <button class="sign-in"
-            ng-click="showRoute()" 
-            id="directions-button" 
-            style=" displaheight: 50px; width: 80px; margin-bottom: 10px; margin-top: 50px; border-radius: 10px">Show Route
-    </button>
-    <button class="sign-in"
-            ng-click="hideRoute()" 
-            id="directions-button" 
-            style="height: 50px; width: 80px; margin-left: 5%; margin-bottom: 10px; margin-top: 50px; border-radius: 10px">Hide Route
-    </button>
-  </div>  
-  <br>
+  <h1>Locative</h1>
+    <div class= "row" style="display: inline;">
+      <button class="sign-in"
+              ng-click="showRoute()" 
+              id="directions-button" 
+              style=" displaheight: 50px; width: 80px; margin-bottom: 10px; margin-top: 50px; border-radius: 10px">Show Route
+      </button>
+      <button class="sign-in"
+              ng-click="hideRoute()" 
+              id="directions-button" 
+              style="height: 50px; width: 80px; margin-left: 5%; margin-bottom: 10px; margin-top: 50px; border-radius: 10px">Hide Route
+      </button>
+    </div>  
+    <br>
 
-<button type="button" class="js-menu-trigger sliding-menu-button">
-  <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/menu-white.png" alt="Menu Icon">
-</button>
+  <button type="button" class="js-menu-trigger sliding-menu-button">
+    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/menu-white.png" alt="Menu Icon">
+  </button>
 
-<nav class="js-menu sliding-menu-content">
-  <ul>
-    <li><a href="javascript:void(0)">Item 1</a></li>
-    <li><a href="javascript:void(0)">Item 2</a></li>
-    <li><a href="javascript:void(0)">Item 3</a></li>
-  </ul>
-</nav>
+  <nav class="js-menu sliding-menu-content">
+    <ul>
+      <li><a href="javascript:void(0)">Item 1</a></li>
+      <li><a href="javascript:void(0)">Item 2</a></li>
+      <li><a href="javascript:void(0)">Item 3</a></li>
+    </ul>
+  </nav>
 
-<div class="js-menu-screen sliding-menu-fade-screen"></div>
-
+  <div class="js-menu-screen sliding-menu-fade-screen"></div>
   <leaflet width="640px" height="480px" markers="markers" center="center" bounds="bounds" layers="layers"></leaflet>
 </div>

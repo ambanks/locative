@@ -6,9 +6,14 @@ angular.module('locativeApp')
   ['$scope', '$rootScope', '$state', '$browser', 'AuthService', 
   function ($scope, $rootScope, $state, $browser, AuthService) {
 
+  // See if we already have a session
+  AuthService.getSession().success(function(user) {
+    $scope.user = user;
+  });
+
   $scope.tabs = [
     { state: 'home',     label: 'Home',        active: true,  isPublic: true  },
-    { state: 'user',     label: 'My Journeys', active: false, isPublic: false },
+    { state: 'user({userId: user.id})',     label: 'My Journeys', active: false, isPublic: false },
     { state: 'about',    label: 'About',       active: false, isPublic: true  },
   ];
 
