@@ -51,6 +51,7 @@ header.navigation {
     img {
       max-height: $navigation-height;
       padding: 0.3em 0;
+      margin-top: -3px;
     }
   }
 
@@ -137,7 +138,7 @@ header.navigation {
 
       @include media ($horizontal-bar-mode) {
         padding-right: 1em;
-        padding-top: 0.2em;
+        padding-top: 0.1em;
       }
 
       &:focus,
@@ -295,6 +296,7 @@ header.navigation {
     margin-top: 1em;
     text-transform: uppercase;
     margin-left: 20px;
+    padding: 4px 18px;
   }
 
   .sign-up {
@@ -303,10 +305,10 @@ header.navigation {
     float: right;
     font-size: 1.5em;
     margin-top: 1em;
-    padding: 0.75em;
     text-transform: uppercase;
     margin-right: 50px;
     margin-left: 20px;
+    padding: 4px 18px;
   }
 
   // Search bar
