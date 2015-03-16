@@ -5,6 +5,8 @@ section.main-middle {
 
   article {
     @include span-columns(6);
+    margin-right: 0px;
+    width: 50%;
   }
 }
 
@@ -106,7 +108,7 @@ section.main-middle {
 
   $hover-tile-height: 30em;
 
-  background: url("/images/Hiking_adj3.jpg");
+  background: url("/images/backpackers_on_cliff.jpg");
   background-position: top;
   background-size: cover;
   background-color: #FFFFFF;

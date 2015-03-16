@@ -113,7 +113,7 @@ $parallax-background-height: $parallax-window-height;
   font-size: 5em;
   font-weight: bold;
   width: 100%;
-  height: 1000px;
+  height: 950px;
 }
 
 .parallax-static-content {
@@ -121,7 +121,7 @@ $parallax-background-height: $parallax-window-height;
   padding: 8em 0;
   float: left;
   padding-left: 10em;
-  position: relative;
+  position: absolute;
   z-index: 9;
 }
 

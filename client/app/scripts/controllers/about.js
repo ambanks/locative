@@ -18,7 +18,7 @@ angular.module('locativeApp')
   });
 
 // parallax
-
+/* jshint ignore:start */
 $(document).ready(function() {
   if ($('#js-parallax-window').length) {
     parallax();
@@ -76,3 +76,4 @@ $(document).ready(function() {
     }
   });
 });
+/* jshint ignore:end */
