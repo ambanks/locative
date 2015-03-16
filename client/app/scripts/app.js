@@ -15,8 +15,13 @@ angular
     'xeditable'
   ])
     
-.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', 
-  function ($httpProvider, $stateProvider, $urlRouterProvider) {
+.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$sceDelegateProvider', 
+  function ($httpProvider, $stateProvider, $urlRouterProvider, $sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+      'self',
+      'https://scontent.cdninstagram.com/**',
+      'http://scontent.cdninstagram.com/**'
+    ]);
 
     $httpProvider.defaults.withCredentials = true;
 
@@ -60,11 +65,11 @@ angular
         }
       }
     })
-    .state('user.journey.posts', {
-      url: '/journeys/{journeyId}/posts',
-      templateUrl: 'partials/user-posts.html',
-      controller: 'PostCtrl'
-    })
+    // .state('user.journey.posts', {
+    //   url: '/journeys/{journeyId}/posts',
+    //   templateUrl: 'partials/user-posts.html',
+    //   controller: 'PostCtrl'
+    // })
 
     // .state('user.journey.map', {
     //   url: '/journeys/{journeyId}/map',
