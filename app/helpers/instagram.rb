@@ -80,9 +80,9 @@ module Instagram
       longitude:    post['location']['longitude'].to_f,
       time_stamp:   post['created_time'],
       tags:         post['tags'],
-      low_res_img:  post['images']['low_resolution']['url'],
-      med_res_img:  post['images']['thumbnail']['url'],
-      hi_res_img:   post['images']['standard_resolution']['url'],
+      low_res_img:  post['images']['low_resolution']['url'].sub!('http', 'https'),
+      med_res_img:  post['images']['thumbnail']['url'].sub!('http', 'https'),
+      hi_res_img:   post['images']['standard_resolution']['url'].sub!('http', 'https'),
       instagram_id: post['id'])
   end
 
