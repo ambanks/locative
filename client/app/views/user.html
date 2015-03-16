@@ -1,9 +1,10 @@
 <h2>{{ user.name }}</h2>
 <h3>{{ user.email }}</h3>
 <h3>Instagram Name: {{ user.instagram_name }}</h3>
+<ul>
 <li ng-repeat="journey in journeys">
-  <a ui-sref="journey({ id: journey.id })" ng-click="getUserJourneys(userId)">{{ journey.name }}</a>
-</li>
-<!-- <div ui-view="map"></div> -->
-<div ui-view="journeys"></div>
-<!-- <div ui-view="posts"></div> -->
+<a ui-sref="user.journey({journeyId: journey.id})">{{ journey.name }}</a></li>
+</ul>
+<div ui-view></div>
+
+

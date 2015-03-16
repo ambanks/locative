@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('locativeApp')
-.controller('UserCtrl', function($scope, UserService, $state, $stateParams, JourneyService) {
+.controller('UserCtrl', ['$scope', 'UserService', '$state', '$stateParams', function ($scope, UserService, $state, $stateParams) {
 
   function getUsers() {
     UserService.getUsers()
@@ -13,26 +13,24 @@ angular.module('locativeApp')
     });
   }
 
-  getUsers();
-
   function getUserById(id) {
     UserService.getUserById(id)
     .success(function(data) {
       console.log(JSON.stringify(data));
-      $scope.user = data['user'];
+      $scope.user = data['user']; 
       $scope.journeys = data['journeys'];
     })
     .error(function(/* data, status, headers, config */) {
       alert('GET: error');
     });
   }
-  console.log($stateParams.userId);
-  getUserById($stateParams.userId);
 
-  function getUserJourneys(id) {
-    JourneyService.getJourneys(id)
+  function getUserJourney(userId, journeyId) {
+    UserService.getUserJourney(userId, journeyId)
     .success(function(data) {
-      $scope.user.journeys = data;
+      console.log(JSON.stringify(data));
+      $scope.journey = data['journey']; 
+      $scope.posts = data['posts'];
     })
     .error(function(/* data, status, headers, config */) {
       alert('GET: error');
@@ -42,7 +40,9 @@ angular.module('locativeApp')
   function checkState(stateName) {
     if (stateName === 'user') {
       getUserById($stateParams.userId);
-    } else {  
+    } else if (stateName === 'user.journey') {
+      getUserJourney($stateParams.userId, $stateParams.journeyId);
+    } else { 
       getUsers();
     }
   }
@@ -52,24 +52,12 @@ angular.module('locativeApp')
   $scope.logUser = function() {
     console.log($scope.user);
   };
- 
+
   $scope.logJourneys = function() {
     console.log($scope.journeys);
   };
-  // getUserJourneys($stateParams.userId);
 
-  $scope.getUser = function(user) {
-    UserService.getUser(user)
-    .success(function(data) {
-      $scope.user = data;
-      console.log(data);
-    })
-    .error(function(/* data, status, headers, config */) {
-      alert('GET: error');
-    });
-  };
-
-  // $scope.getUser();
+  console.log($state.$current.name);
 
   $scope.updateUser = function(user) {
     return UserService.updateUser(user)
@@ -117,4 +105,4 @@ angular.module('locativeApp')
     });
   };
 
-});
+}]);

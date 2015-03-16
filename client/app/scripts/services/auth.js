@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('locativeApp')
-.service('AuthService', function ($http) {
+.service('AuthService', ['$http', function ($http) {
 
   var that = this;
 
@@ -48,4 +48,4 @@ angular.module('locativeApp')
     });
     return deferred;
   };
-});
+}]);

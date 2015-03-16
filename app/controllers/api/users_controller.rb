@@ -8,13 +8,14 @@ class Api::UsersController < ApplicationController
 
   def show
     user = User.find(params[:id])
-    render json: {user: user, journeys: user.journeys }
+    render json: { user: user, journeys: user.journeys }
   end
 
   def create
     user = User.new(user_params)
     if user.save
       sign_in user
+      Instagram.get_user_id(user)
       render json: user, status: 201, location: [:api, user]
     else
       render json: { errors: user.errors }, status: 422
