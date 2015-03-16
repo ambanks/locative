@@ -239,26 +239,26 @@ $parallax-background-height: $parallax-window-height;
   $base-line-height: 1.5em !default;
   $base-spacing: 1.5em !default;
   $dark-gray: #333 !default;
-  $base-font-color: black !default;
+  $base-font-color: white !default;
   
   line-height: $base-line-height;
 
   p {
-    color: black;
+    color: white;
     line-height: $base-line-height;
     font-size: $base-font-size *2;
   }
   //////////////////////////////////////////////////////////////////////////////////
 
   @include clearfix;
-  background: $base-background-color;
+  background: black;
   border-radius: $base-border-radius;
   border: 1px solid silver;
-  box-shadow: 0 2px 2px transparentize(black, 0.8);
+  box-shadow: 0 10px 10px transparentize(black, 0.8);
   margin-bottom: 4em;
   padding: $base-spacing;
   text-align: center;
-  width: 50%;
+  width: 100%;
   display: block;
   margin: 0 auto;
 
@@ -273,24 +273,36 @@ $parallax-background-height: $parallax-window-height;
   opacity: 1;
 }
 
-.sliding-menu-content {  
-  ///////////////////////////////////////////////////////////////////////////////////
-  $base-accent-color: #477DCA !default;
-  $dark-gray: #333 !default;
-
-  ul {
-    padding: 0;
-    margin: 0;
-  }
-
-  li {
-    list-style: none;
-  }
-
-  a {
+/* hollow sm icons */
+a, a:hover {
     text-decoration: none;
-  }
-  //////////////////////////////////////////////////////////////////////////////////
+}
 
- 
+.socialbtns, .socialbtns ul, .socialbtns li {
+    margin: 0;
+    padding: 5px;
+}
+
+.socialbtns li {
+    list-style: none outside none;
+    display: inline-block;
+}
+
+.socialbtns .fa {
+    width: 40px;
+    height: 28px;
+    color: #000;
+    background-color: #FFF;
+    border: 1px solid #000;
+    padding-top: 12px;
+    border-radius: 22px;
+    -moz-border-radius: 22px;
+    -webkit-border-radius: 22px;
+    -o-border-radius: 22px;
+}
+
+.socialbtns .fa:hover {
+    color: #FFF;
+    background-color: #000;
+    border: 1px solid #000;
 }

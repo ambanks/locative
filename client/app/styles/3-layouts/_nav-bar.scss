@@ -134,7 +134,6 @@ header.navigation {
 
     a {
       color: $navigation-color;
-      display: inline-block;
       font-weight: 400;
 
       @include media ($horizontal-bar-mode) {
