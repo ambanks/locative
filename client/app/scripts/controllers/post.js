@@ -14,7 +14,7 @@ angular.module('locativeApp')
     });
   }
 
-  getPosts();
+  // getPosts();
 
   $scope.getPost = function(user, journey, post) {
     PostService.getPost(user, journey, post)

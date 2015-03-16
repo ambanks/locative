@@ -15,12 +15,13 @@ module Instagram
   #   # user.instagram_id = user_profile['data'][0]['id'].to_i
   # end
 
-  def self.get(user)
+  def self.get_posts(user)
     get_user_posts(user).collect_new_locative.make_journeys
   end
 
   def self.test(user)
     get_user_posts(user).collect_new_locative
+    @locative_posts.sort_by! { |post| post['created_time'] }
     return @locative_posts
   end
 
@@ -36,7 +37,7 @@ module Instagram
     tags.each do |tag|
       @user_posts['data'].each do |post| 
         if post['tags'].include?(tag)
-          @locative_posts << post unless old_ig_ids.include?(post['id'])
+          @locative_posts << post unless old_ig_ids.include?(post['id']) || post['type'] == 'video'
         end
       end
     end
@@ -79,9 +80,9 @@ module Instagram
       longitude:    post['location']['longitude'].to_f,
       time_stamp:   post['created_time'],
       tags:         post['tags'],
-      low_res_img:  post['images']['low_resolution']['url'],
-      med_res_img:  post['images']['thumbnail']['url'],
-      hi_res_img:   post['images']['standard_resolution']['url'],
+      low_res_img:  post['images']['low_resolution']['url'].sub!('http', 'https'),
+      med_res_img:  post['images']['thumbnail']['url'].sub!('http', 'https'),
+      hi_res_img:   post['images']['standard_resolution']['url'].sub!('http', 'https'),
       instagram_id: post['id'])
   end
 
@@ -104,4 +105,3 @@ module Instagram
   end
   
 end
-

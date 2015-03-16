@@ -1,10 +1,17 @@
-<div ng-controller="PostCtrl">
-  <ul>
-    <li ng-repeat="post in posts">
-      <a img ng-src="{{ post.lowResImg }}"></a>
+<!-- <h3>{{journey.name}}</h3>
+<ul>
+  <li ng-repeat="post in posts">
+    {{ post.latitude }}, {{ post.longitude }}
+  </li>
+</ul> -->
+
+<!-- <div ng-controller="PostCtrl"> -->
+  <ul ng-repeat="post in posts">
+    <li>
+      <img ng-src="{{ post.low_res_img }}">
       <a href="#"
          editable-text="post.caption"
          onaftersave="updatePost()">{{ post.caption || '' }}</a>
     </li>
   </ul>
-</div>
+<!-- </div> -->
