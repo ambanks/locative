@@ -37,7 +37,7 @@ angular
       controller: 'UserCtrl'
     })
     .state('user', {
-      url: 'users/{userId:[1-9]{1,4}}',
+      url: 'users/{userId}',
       templateUrl: 'views/user.html',
       controller: 'UserCtrl',
       resolve:   {
@@ -49,8 +49,8 @@ angular
       }
     })
     .state('user.journey', {
-      url: '/journeys/{journeyId:[1-9]{1,4}}',
-      templateUrl: 'views/user.journey.html',
+      url: '/journeys/{journeyId}',
+      templateUrl: 'partials/user-journeys.html',
       controller: 'UserCtrl',
       resolve: {
         journey: function($http, $stateParams){
@@ -59,7 +59,19 @@ angular
             .then(function(response){ return response['journeys']; });
         }
       }
-    })   
+    })
+    .state('user.journey.posts', {
+      url: '/journeys/{journeyId}/posts',
+      templateUrl: 'partials/user-posts.html',
+      controller: 'PostCtrl'
+    })
+
+    // .state('user.journey.map', {
+    //   url: '/journeys/{journeyId}/map',
+    //   templateUrl: 'partials/user-map.html',
+    //   controller: 'MapCtrl'
+    // })
+
     .state('signup', {
       url: '/signup', 
       templateUrl: 'views/signup.html',

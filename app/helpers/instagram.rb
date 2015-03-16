@@ -15,7 +15,7 @@ module Instagram
   #   # user.instagram_id = user_profile['data'][0]['id'].to_i
   # end
 
-  def self.get(user)
+  def self.get_posts(user)
     get_user_posts(user).collect_new_locative.make_journeys
   end
 
@@ -36,7 +36,7 @@ module Instagram
     tags.each do |tag|
       @user_posts['data'].each do |post| 
         if post['tags'].include?(tag)
-          @locative_posts << post unless old_ig_ids.include?(post['id'])
+          @locative_posts << post unless old_ig_ids.include?(post['id']) || post['type'] == 'video'
         end
       end
     end
