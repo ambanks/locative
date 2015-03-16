@@ -1,13 +1,15 @@
 section.main-middle {
   @include outer-container(100%);
 
-  margin-top: 20px;
-
   article {
     @include span-columns(6);
     margin-right: 0px;
-    width: 50%;
+    width: 100%;
   }
+}
+
+.side-image .side-image-content {
+  background-color: #3A1E06;
 }
 
 /*/HOVER-TILE*/
@@ -31,7 +33,7 @@ section.main-middle {
 
   $hover-tile-height: 30em;
 
-  background: url("/images/picjumbo.com_HNCK4135.jpg");
+  background: url("/images/rolling-hills-m1.jpg");
   background-position: top;
   background-size: cover;
   background-color: #FFFFFF;
@@ -41,7 +43,7 @@ section.main-middle {
   margin-bottom: $base-line-height;
   
   @include media($medium-screen) {
-    width: 40%;
+    width: 100%;
   }
 
   .hover-tile-container {

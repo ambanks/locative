@@ -38,7 +38,6 @@ header.navigation {
   .navigation-wrapper {
     @include clearfix;
     @include outer-container;
-    position: fixed;
     z-index: 9999;
     max-width: 148em;
   }
@@ -300,6 +299,18 @@ header.navigation {
   }
 
   .sign-up {
+  @include button(flat, $base-accent-color);
+    display: inline;
+    float: right;
+    font-size: 1.5em;
+    margin-top: 1em;
+    text-transform: uppercase;
+    margin-right: 50px;
+    margin-left: 20px;
+    padding: 4px 18px;
+  }
+
+  .sign-out {
   @include button(flat, $base-accent-color);
     display: inline;
     float: right;

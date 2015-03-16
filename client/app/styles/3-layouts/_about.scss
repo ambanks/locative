@@ -173,7 +173,7 @@ $parallax-background-height: $parallax-window-height;
   }
 
   .images-wrapper {
-    @include background(url('/images/43e39040_adj2.jpg'), linear-gradient($side-image-background-top, $side-image-background-bottom), no-repeat $side-image-background-top scroll);
+    @include background(url('/images/girloncliff_diffuse.png'), linear-gradient($side-image-background-top, $side-image-background-bottom), no-repeat $side-image-background-top scroll);
     
     background-color: $side-image-background-top;
     background-size: cover;
