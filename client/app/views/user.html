@@ -1,4 +1,9 @@
-<!-- Not working. Needs appropriate route & controller. -->
 <h2>{{ user.name }}</h2>
 <h3>{{ user.email }}</h3>
-
+<h3>Instagram Name: {{ user.instagram_name }}</h3>
+<li ng-repeat="journey in journeys">
+  <a ui-sref="journey({ id: journey.id })" ng-click="getUserJourneys(userId)">{{ journey.name }}</a>
+</li>
+<!-- <div ui-view="map"></div> -->
+<div ui-view="journeys"></div>
+<!-- <div ui-view="posts"></div> -->

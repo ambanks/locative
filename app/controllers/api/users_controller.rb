@@ -7,7 +7,8 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    respond_with User.find(params[:id])
+    user = User.find(params[:id])
+    render json: {user: user, journeys: user.journeys }
   end
 
   def create

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('locativeApp')
-.controller('UserCtrl', function($scope, UserService) {
+.controller('UserCtrl', function($scope, UserService, $state, $stateParams, JourneyService) {
 
   function getUsers() {
     UserService.getUsers()
@@ -15,10 +15,54 @@ angular.module('locativeApp')
 
   getUsers();
 
+  function getUserById(id) {
+    UserService.getUserById(id)
+    .success(function(data) {
+      console.log(JSON.stringify(data));
+      $scope.user = data['user'];
+      $scope.journeys = data['journeys'];
+    })
+    .error(function(/* data, status, headers, config */) {
+      alert('GET: error');
+    });
+  }
+  console.log($stateParams.userId);
+  getUserById($stateParams.userId);
+
+  function getUserJourneys(id) {
+    JourneyService.getJourneys(id)
+    .success(function(data) {
+      $scope.user.journeys = data;
+    })
+    .error(function(/* data, status, headers, config */) {
+      alert('GET: error');
+    });
+  }
+
+  function checkState(stateName) {
+    if (stateName === 'user') {
+      getUserById($stateParams.userId);
+    } else {  
+      getUsers();
+    }
+  }
+
+  checkState($state.$current.name);
+
+  $scope.logUser = function() {
+    console.log($scope.user);
+  };
+ 
+  $scope.logJourneys = function() {
+    console.log($scope.journeys);
+  };
+  // getUserJourneys($stateParams.userId);
+
   $scope.getUser = function(user) {
     UserService.getUser(user)
     .success(function(data) {
       $scope.user = data;
+      console.log(data);
     })
     .error(function(/* data, status, headers, config */) {
       alert('GET: error');

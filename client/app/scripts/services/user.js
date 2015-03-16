@@ -11,6 +11,10 @@ angular.module('locativeApp')
     return $http.get('/api/users/' + user.id);
   };
 
+  this.getUserById = function(id) {
+    return $http.get('/api/users/' + id);
+  };
+
   this.updateUser = function(user) {
     console.log('updateUser: ' + JSON.stringify(user));
     return $http.put('/api/users/' + user.id, { user: user } );
