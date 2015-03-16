@@ -2,7 +2,9 @@
 
 angular.module('locativeApp')
 
-.controller('NavCtrl', function ($scope, $rootScope, $state, $browser, AuthService) {
+.controller('NavCtrl', 
+  ['$scope', '$rootScope', '$state', '$browser', 'AuthService', 
+  function ($scope, $rootScope, $state, $browser, AuthService) {
 
   // See if we already have a session
   AuthService.getSession().success(function(user) {
@@ -63,4 +65,4 @@ angular.module('locativeApp')
     $scope.user = null;
     $state.go('home');
   });
-});
+}]);

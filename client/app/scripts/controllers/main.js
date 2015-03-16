@@ -7,8 +7,14 @@
  * Controller of the locativeApp
  */
 angular.module('locativeApp')
-  .controller('MainCtrl', function ($scope, $http, leafletData) {
-
+  .controller('MainCtrl', 
+    ['$scope', '$http', 'leafletData', 
+    function ($scope, $http, leafletData) {
+    $scope.awesomeThings = [
+      'HTML5 Boilerplate',
+      'AngularJS',
+      'Karma'
+    ];
     angular.extend($scope, {
                 markers: [],
                 bounds: {},
@@ -75,28 +81,28 @@ angular.module('locativeApp')
     var i;
     var posts = [];
 
-    // $http.get('/api/users/1/journeys/16/posts')
-    // .success(function(data) {
-    //   for (i=0; i < data.length; i++) {
-    //     var postData = {
-    //     caption:     data[i].caption, 
-    //     latitude:    data[i].latitude, 
-    //     longitude:   data[i].longitude,
-    //     timeStamp:   data[i].time_stamp,
-    //     journeyId:   data[i].journey_id,
-    //     tags:        data[i].tags,
-    //     createdAt:   data[i].created_at,
-    //     updatedAt:   data[i].updated_at,
-    //     lowResImg:   data[i].low_res_img, 
-    //     medResImg:   data[i].med_res_img, 
-    //     hiResImg:    data[i].hi_res_img, 
-    //     instagramId: data[i].instagram_id 
-    //     };
+    $http.get('/api/users/1/journeys/1/posts')
+    .success(function(data) {
+      for (i=0; i < data.length; i++) {
+        var postData = {
+        caption:     data[i].caption, 
+        latitude:    data[i].latitude, 
+        longitude:   data[i].longitude,
+        timeStamp:   data[i].time_stamp,
+        journeyId:   data[i].journey_id,
+        tags:        data[i].tags,
+        createdAt:   data[i].created_at,
+        updatedAt:   data[i].updated_at,
+        lowResImg:   data[i].low_res_img, 
+        medResImg:   data[i].med_res_img, 
+        hiResImg:    data[i].hi_res_img, 
+        instagramId: data[i].instagram_id 
+        };
 
-    //     posts.push(postData);
-    //     latitudes.push(postData.latitude);
-    //     longitudes.push(postData.longitude);
-    //   }
+        posts.push(postData);
+        latitudes.push(postData.latitude);
+        longitudes.push(postData.longitude);
+      }
 
       var maxLat = _.max(latitudes);
       var minLat = _.min(latitudes);
@@ -139,6 +145,7 @@ angular.module('locativeApp')
         }
       });
     });
-  // });
+  }]);
+
 
 
