@@ -2,7 +2,7 @@
 
 angular.module('locativeApp')
 
-.controller('PostCtrl', function ($scope, PostService, xeditable) {
+.controller('PostCtrl', ['$scope', 'PostService', 'xeditable', function ($scope, PostService, xeditable) {
 
   function getPosts() {
     PostService.getPosts(user, journey)

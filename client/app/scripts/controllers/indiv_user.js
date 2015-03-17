@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('locativeApp')
-.controller('IndivUserCtrl', function($scope, UserService, $stateParams) {
+.controller('IndivUserCtrl', ['$scope', '$UserService, $stateParams', function($scope, UserService, $stateParams) {
   
   function getUserById(id) {
     UserService.getUserById(id)
@@ -15,4 +15,4 @@ angular.module('locativeApp')
   }
   console.log($stateParams.userId);
   getUserById($stateParams.userId);
-});
+}]);
