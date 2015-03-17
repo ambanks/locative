@@ -1,3 +1,56 @@
+
+<!-- <div ng-controller="JourneyCtrl"> -->
+<!-- <h2>{{ user.name }}</h2>
+<h3>{{ user.email }}</h3>
+<h3>Instagram Name: {{ user.instagram_name }}</h3>
+<ul>
+<li ng-repeat="journey in journeys">
+<a ui-sref="user.journey({journeyId: journey.id})">{{ journey.name }}</a></li>
+</ul>
+<div ui-view></div> -->
+
+<ui-view>
+        <i>Some content will load here!</i>
+<h1>This is the journeys page!</h1>
+  <div ng-hide="journeysNil">
+  <h1 ng-model="user.name">{{user.name}}'s Journeys</h1> 
+
+    <div ng-repeat="journey in journeys" ng-controller="FormCtrl">
+      <form editable-form name="journeyForm" onaftersave="updateJourney(journey)">
+      <!-- <a ui-sref="user.journey({journeyId: journey.id})">{{ journey.name }}</a> -->
+      <div>
+        <a ui-sref="user.journey({journeyId: journey.id})">
+          <span editable-text="journey.name" e-name="name" e-required>{{ journey.name || 'empty' }}</span>
+        </a>  
+      </div> 
+      <div>
+        <span editable-text="journey.date" e-name="date" e-required>{{ journey.date || 'empty' }}</span>
+      </div> 
+      <!-- button to show form -->
+      <div ng-show="isAuthorized()">
+          <!-- button to show form -->
+        <button type="button" ng-click="journeyForm.$show()" ng-show="!journeyForm.$visible"> Edit </button>
+        <!-- buttons to submit / cancel form -->
+        <span ng-show="journeyForm.$visible">
+          <button type="submit" ng-disabled="journeyForm.$waiting">
+            Save
+          </button>
+          <button type="button" ng-disabled="journeyForm.$waiting" ng-click="destroyJourney(journey)">
+            Delete
+          </button>
+          <button type="button" ng-disabled="journeyForm.$waiting" ng-click="journeyForm.$cancel()">
+            Cancel
+          </button>
+        </span>
+      </div>
+      </form> 
+    </div> 
+  </div>
+
+
+
+  <!--       <a ui-sref="#"
+=======
 <ui-view>
   <h1>Locative</h1>
   <div ng-controller="MapCtrl">
@@ -16,6 +69,7 @@
       <li ng-repeat="journey in journeys">
          <a ui-sref="user.journey({journeyId: journey.id})">{{ journey.name }}</a>
         <a ui-sref="#"
+>>>>>>> master
            editable-text="journey.date"
            onaftersave="updateJourney()">{{ journey.date }}</a>
         <button type="button" 
@@ -30,12 +84,13 @@
                 ng-model="journey.name"
                 placeholder:"{{ journey.name }}"
                 onaftersave="updateJourney()"
-                onaftersave="stopEditing()">
-      </li>
-    </ul> -->
-  </div>
-  <div class="new-user no-journeys" 
-        ng-show="journeysNil">
+<<<<<<< HEAD
+                onaftersave="stopEditing()"
+        </form> -->
+
+      
+
+  <div  class="new-user no-journeys"  ng-show="journeysNil">
     <h1 style="text-align: center;"><strong>#locativeGo!</strong></h1>
     <br>
     <h2 ng-model="user.name" 
@@ -47,4 +102,6 @@
     <br>
     <h2 style="text-align: center;"><strong>#locativeGo!</strong></h2>
   </div>
+
 </ui-view>
+

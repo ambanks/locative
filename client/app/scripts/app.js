@@ -30,7 +30,7 @@ angular
     .state('home', {
       url: '/',
       templateUrl: 'views/main.html',
-      controller: 'MainCtrl'
+      controller: 'MapCtrl'
     })
     .state('about', {
       url: '/about',
@@ -78,56 +78,11 @@ angular
     });
     $urlRouterProvider.otherwise('home');
   }])
-      // .state('user.journeys', {
-      //   url: '/journeys',
-      //   templateUrl: 'partials/user-journeys.html',
-      //   controller: 'JourneyCtrl',
-      //   resolve:   {
-      //     journeys: function($http){
-      //         var url = '/api/users/{userId}/journeys';
-      //         return $http.get(url)
-      //             .then(function(res){ return res['journeys']; });
-      //     }
-      //   }
-      // })
-      // .state('user.map', {
-      //   url: '/map',
-      //   templateUrl: 'partials/user-map.html',
-      //   controller: 'MapCtrl'
-      // })
-      
+     
   .run(function(editableOptions) {
     editableOptions.theme = 'default'; // bootstrap3 theme. Can be also 'bs2', 'default'
   });
-       
-       // views: {
-       //    'map': {
-       //      templateUrl: 'partials/users-indiv-map.html',
-       //      controller: 'MainCtrl'
-       //    },
-       //    'journeys': {
-       //      templateUrl: 'partials/users-indiv-journeys.html',
-       //      controller: 'JourneyCtrl'
-       //    },
-       //    'posts': {
-       //      templateUrl: 'partials/users-indiv-posts.html',
-       //      controller: 'PostCtrl'
-       //    }
-       //  }
-        // .state('user', {
-        //   url: 'users/{userId:[0-9]{1,4}}', 
-        //   templateUrl: 'views/user.html',
-        //   controller: 'UserCtrl'
-        // })
- 
-        // .state('users.detail.journeys', {
-        //       url: '/users/{userId:[0-9][0-9]}', 
-        //       templateUrl: 'partials/journey.html',
-        //       controller: function($scope){
-        //         $scope.things = ["A", "Set", "Of", "Things"];
-        //       }
-        //   })
-
+    
 
   // Groups routing from lunch hub. Provides an example of 
   // conditional onEnter

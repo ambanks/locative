@@ -13,7 +13,7 @@ angular.module('locativeApp')
 
   $scope.tabs = [
     { state: 'home',     label: 'Home',        active: true,  isPublic: true  },
-    { state: 'user({userId: user.id})',     label: 'My Journeys', active: false, isPublic: false },
+    { state: 'user({userId: user.id})',        label: 'My Journeys', active: false, isPublic: false },
     { state: 'about',    label: 'About',       active: false, isPublic: true  },
   ];
 
@@ -49,14 +49,12 @@ angular.module('locativeApp')
   };
 
   $rootScope.$on('auth:new-sign-up', function(event, user) {
-    // console.log('caught event auth:new-sign-up with user = ' + JSON.stringify(user));
+    
     $scope.user = user;
     $state.go('users');
   });
 
   $rootScope.$on('auth:sign-in', function(event, user) {
-    // console.log('caught event auth:login with user = ' + JSON.stringify(user));
-    console.log('cookies: ' + JSON.stringify($browser.cookies()));
     $scope.user = user;
     $state.go('users');
   });
