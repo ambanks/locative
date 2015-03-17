@@ -202,7 +202,8 @@ $parallax-background-height: $parallax-window-height;
     h1 {
       margin-bottom: 0.9em;
       color: #FFFFFF;
-      font-size: $base-font-size *3; 
+      font-size: $base-font-size *3;
+      text-align: center; 
     }
 
     h4 {
@@ -307,7 +308,7 @@ a, a:hover {
     border: 1px solid #000;
 }
 
-section.bio-pics article img {
- width: 300px;
+span.journey-list-box {
+  font-size: 2.2em;
+  margin: 2em 0;
 }
-

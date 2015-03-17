@@ -1,16 +1,16 @@
-<div style="margin-top:200px;" class="user-account-name">
+<div class="user-account-name">
   <h2>{{ user.name }}</h2>
   <h3>Instagram Name: {{ user.instagram_name }}</h3>
   <h1>This is the journeys page!</h1>
   <div class="user-account-journeys" ng-hide="journeysNil">
-    <h1 ng-model="user.name" style="text-align: center;">{{user.name}}'s Journeys</h1> 
+    <h1 ng-model="user.name" class="user-list-title">{{user.name}}'s journeys</h1> 
     <div class="user-journeys">
       <div ng-repeat="journey in journeys" ng-controller="FormCtrl">
         <form editable-form name="journeyForm" onaftersave="updateJourney(journey)">
         <!-- <a ui-sref="user.journey({journeyId: journey.id})">{{ journey.name }}</a> -->
           <div>
             <a ui-sref="user.journey({journeyId: journey.id})">
-              <span editable-text="journey.name" e-name="name" e-required>{{ journey.name || 'empty' }}</span>
+              <span class="journey-list-box" editable-text="journey.name" e-name="name" e-required>{{ journey.name || 'empty' }}</span>
             </a>  
           </div> 
           <div>
