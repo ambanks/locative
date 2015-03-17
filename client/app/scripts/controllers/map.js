@@ -123,7 +123,7 @@ angular.module('locativeApp')
         }
       };
       
-      var markers = []
+      var markers = [];
       for(i=0;i<posts.length;i++) {
         markers.push(L.marker([parseFloat(posts[i].latitude), parseFloat(posts[i].longitude)]));
       }

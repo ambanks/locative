@@ -10,7 +10,7 @@
     <leaflet width="640px" height="480px" markers="markers" center="center" bounds="bounds" layers="layers"></leaflet>
   </div>
 
-  <ul rn-carousel rn-carousel-controls class="post">
+  <ul rn-carousel rn-carousel-controls class="post" ng-controller="MapCtrl">
     <li ng-repeat="post in posts">
       <div class="layer">{{ image }}</div>
       <img ng-src="{{ post['hi_res_img'] }}">
