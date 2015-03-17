@@ -47,12 +47,12 @@ angular.module('locativeApp')
   $scope.updateJourney = function(journey) {
     return JourneyService.updateJourney(journey)
     .success(function() {
-      UserService.getUserById($scope.user.id)
-      .success(function(data) {
-        console.log(JSON.stringify(data));
-        $scope.user = data['user']; 
-        $scope.journeys = data['journeys'];
-      });
+      // UserService.getUserById($scope.user.id)
+      // .success(function(data) {
+      //   console.log(JSON.stringify(data));
+      //   $scope.user = data['user']; 
+      //   $scope.journeys = data['journeys'];
+      // });
     })
     .error(function(data, status) {
       console.log(data);
@@ -63,12 +63,12 @@ angular.module('locativeApp')
   $scope.destroyJourney = function(journey) {
     JourneyService.destroyJourney(journey)
     .success(function() {
-      UserService.getUserById($scope.user.id)
-      .success(function(data) {
-        console.log(JSON.stringify(data));
-        $scope.user = data['user']; 
-        $scope.journeys = data['journeys'];
-      });
+      // UserService.getUserById($scope.user.id)
+      // .success(function(data) {
+      //   console.log(JSON.stringify(data));
+      //   $scope.user = data['user']; 
+      //   $scope.journeys = data['journeys'];
+      // });
     })
     .error(function(data, status) {
       console.log(data);
