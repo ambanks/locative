@@ -26,6 +26,7 @@ module Instagram
   end
 
   def self.collect_new_locative
+    @locative_posts = []
     tags = ['locativego', 'locative', 'locativeend']
     old_ig_ids = @current_user.posts.collect { |post| post.instagram_id }
     tags.each do |tag|

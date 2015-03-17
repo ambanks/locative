@@ -50,7 +50,7 @@ angular
         user: function($http, $stateParams){
             var url = '/api/users/' + $stateParams.userId;
             return $http.get(url)
-                .then(function(response){ return response['user']; });
+                .then(function(response){ return response.user; });
         }
       }
     })
@@ -62,7 +62,7 @@ angular
         journey: function($http, $stateParams){
           var url = 'api/users/' + $stateParams.userId + '/journeys/' + $stateParams.journeyId;
           return $http.get(url)
-            .then(function(response){ return response['journeys']; });
+            .then(function(response){ return response.journeys; });
         }
       }
     })
@@ -88,7 +88,9 @@ angular
       templateUrl: 'views/signin.html',
       controller: 'AuthCtrl'
     });
+
     $urlRouterProvider.otherwise('home');
+    
   }])
      
   .run(function(editableOptions) {
