@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('locativeApp')
-.controller('JourneyCtrl', function ($scope, user, journey, JourneyService, xeditable) {
+.controller('JourneyCtrl', ['$scope', 'user', 'journey', 'JourneyService', 'xeditable',
+ function ($scope, user, journey, JourneyService, xeditable) {
 
   function getJourneys(user) {
     JourneyService.getJourneys(user)
@@ -66,4 +67,4 @@ angular.module('locativeApp')
   function stopEditing() {
     $scope.isEditing = false;
   }
-});
+}]);

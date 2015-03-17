@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('locativeApp')
-.service('JourneyService', function($http) {
+.service('JourneyService', ['$http', function ($http) {
 
   this.getJourneys = function(user) {
     return $http.get('/api/users/' + user.id + '/journeys');
@@ -11,12 +11,12 @@ angular.module('locativeApp')
     return $http.get('/api/users/' + user.id + '/journeys/' + journey.id);
   };
 
-  this.updateJourney = function(user, journey) {
+  this.updateJourney = function(journey) {
     console.log('updateJourney: ' + JSON.stringify(journey));
-    return $http.put('/api/users/' + user.id + '/journeys/' + journey.id, { journey: journey } );
+    return $http.put('/api/users/' + journey['user_id']+ '/journeys/' + journey.id, { journey: journey } );
   };
 
-  this.destroyJourney = function(user, journey) {
-    return $http.delete('/api/users/' + user.id + '/journeys/' + journey.id);
+  this.destroyJourney = function(journey) {
+    return $http.delete('/api/users/' + journey['user_id'] + '/journeys/' + journey.id, { journey: journey });
   };
-});
+}]);

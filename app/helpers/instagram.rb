@@ -9,12 +9,6 @@ module Instagram
     user.update_attribute(:instagram_id, user_profile['data'][0]['id'].to_i)
   end
 
-  # def self.test_user_id(user)
-  #   user_profile = HTTParty.get("https://api.instagram.com/v1/users/search?q=#{user.instagram_name}&access_token=#{@access_token}")
-  #   return user_profile['data'][0]['id'].to_i
-  #   # user.instagram_id = user_profile['data'][0]['id'].to_i
-  # end
-
   def self.get_posts(user)
     get_user_posts(user).collect_new_locative.make_journeys
   end
@@ -32,12 +26,15 @@ module Instagram
   end
 
   def self.collect_new_locative
+    @locative_posts = []
     tags = ['locativego', 'locative', 'locativeend']
     old_ig_ids = @current_user.posts.collect { |post| post.instagram_id }
     tags.each do |tag|
       @user_posts['data'].each do |post| 
         if post['tags'].include?(tag)
-          @locative_posts << post unless old_ig_ids.include?(post['id']) || post['type'] == 'video'
+          unless old_ig_ids.include?(post['id']) || post['type'] == 'video'  
+            @locative_posts << post 
+          end
         end
       end
     end
@@ -48,6 +45,7 @@ module Instagram
     @locative_posts.sort_by! { |post| post['created_time'] }
     unless @locative_posts.empty?
       @locative_posts.each do |post|
+
         case 
         when post['tags'].include?('locativego')
           if new_user?
