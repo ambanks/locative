@@ -1,10 +1,42 @@
 <h2>{{ user.name }}</h2>
 <h3>{{ user.email }}</h3>
 <h3>Instagram Name: {{ user.instagram_name }}</h3>
-<ul>
-<li ng-repeat="journey in journeys">
-<a ui-sref="user.journey({journeyId: journey.id})">{{ journey.name }}</a></li>
-</ul>
+  <div ng-hide="journeysNil">
+  <h1 ng-model="user.name">{{user.name}}'s Journeys</h1> 
+
+    <div ng-repeat="journey in journeys" ng-controller="FormCtrl">
+      <form editable-form name="journeyForm" onaftersave="updateJourney(journey)">
+      <!-- <a ui-sref="user.journey({journeyId: journey.id})">{{ journey.name }}</a> -->
+      <div>
+        <a ui-sref="user.journey({journeyId: journey.id})">
+          <span editable-text="journey.name" e-name="name" e-required>{{ journey.name || 'empty' }}</span>
+        </a>  
+      </div> 
+      <div>
+        <span editable-text="journey.date" e-name="date" e-required>{{ journey.date || 'empty' }}</span>
+      </div> 
+      <!-- button to show form -->
+      <div ng-show="isAuthorized()">
+          <!-- button to show form -->
+        <button type="button" ng-click="journeyForm.$show()" ng-show="!journeyForm.$visible"> Edit </button>
+        <!-- buttons to submit / cancel form -->
+        <span ng-show="journeyForm.$visible">
+          <button type="submit" ng-disabled="journeyForm.$waiting">
+            Save
+          </button>
+          <button type="button" ng-disabled="journeyForm.$waiting" ng-click="destroyJourney(journey)">
+            Delete
+          </button>
+          <button type="button" ng-disabled="journeyForm.$waiting" ng-click="journeyForm.$cancel()">
+            Cancel
+          </button>
+        </span>
+      </div>
+      </form> 
+    </div> 
+  </div>
+
+
 <div ui-view></div>
 
 

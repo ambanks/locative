@@ -1,3 +1,4 @@
+
 <!-- <div ng-controller="JourneyCtrl"> -->
 <!-- <h2>{{ user.name }}</h2>
 <h3>{{ user.email }}</h3>
@@ -44,11 +45,31 @@
       </div>
       </form> 
     </div> 
-
+  </div>
 
 
 
   <!--       <a ui-sref="#"
+=======
+<ui-view>
+  <h1>Locative</h1>
+  <div ng-controller="MapCtrl">
+    <div class = "row" style="display: inline;">
+      <button ng-click="showRoute()" id="directions-button" style="height: 50px; width: 80px; margin-bottom: 10px; border-radius: 10px">Show Route</button>
+      <button ng-click="hideRoute()" id="directions-button" style="height: 50px; width: 80px; margin-left: 5%; margin-bottom: 10px; border-radius: 10px">Hide Route</button>
+    </div>  
+    <br>
+
+    <leaflet width="640px" height="480px" markers="markers" center="center" bounds="bounds" layers="layers"></leaflet>
+  </div>
+
+  <div ng-hide="journeysNil">
+    <h1 ng-model="user.name">{{user.name}}'s Journeys</h1> 
+    <!-- <ul>
+      <li ng-repeat="journey in journeys">
+         <a ui-sref="user.journey({journeyId: journey.id})">{{ journey.name }}</a>
+        <a ui-sref="#"
+>>>>>>> master
            editable-text="journey.date"
            onaftersave="updateJourney()">{{ journey.date }}</a>
         <button type="button" 
@@ -63,24 +84,24 @@
                 ng-model="journey.name"
                 placeholder:"{{ journey.name }}"
                 onaftersave="updateJourney()"
+<<<<<<< HEAD
                 onaftersave="stopEditing()"
         </form> -->
 
-      </div>
+      
 
-  <div  class="new-user no-journeys" 
-        ng-show="journeysNil">
+  <div  class="new-user no-journeys"  ng-show="journeysNil">
     <h1 style="text-align: center;"><strong>#locativeGo!</strong></h1>
     <br>
     <h2 ng-model="user.name" 
-        style="text-align: center;">Welcome to locative, {{ user.name }}!</h2>
+        style="text-align: center;">Welcome to locative, {{ user.name }}!
+    </h2>
     <h4>Looks like you don't have any journeys to share yet. No problem... To start your first journey, post the initial photo to Instagram with the hashtag <strong>#locativeGo</strong> (making sure the 'Add to Photo Map' option is selected), and you're off! Any additional photos you want to share along the way will need to be hashtagged <strong>#locative</strong> as well. We'll take care of the rest.
 
     When you're ready for your next journey, you know what to do... </h4>
     <br>
     <h2 style="text-align: center;"><strong>#locativeGo!</strong></h2>
   </div>
-  </ui-view>
 
+</ui-view>
 
-<!-- </div> -->

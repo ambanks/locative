@@ -9,12 +9,6 @@ module Instagram
     user.update_attribute(:instagram_id, user_profile['data'][0]['id'].to_i)
   end
 
-  # def self.test_user_id(user)
-  #   user_profile = HTTParty.get("https://api.instagram.com/v1/users/search?q=#{user.instagram_name}&access_token=#{@access_token}")
-  #   return user_profile['data'][0]['id'].to_i
-  #   # user.instagram_id = user_profile['data'][0]['id'].to_i
-  # end
-
   def self.get_posts(user)
     get_user_posts(user).collect_new_locative.make_journeys
   end
@@ -108,4 +102,3 @@ module Instagram
   end
   
 end
-

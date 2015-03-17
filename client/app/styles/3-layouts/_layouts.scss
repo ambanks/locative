@@ -1,0 +1,10 @@
+#main {
+    @include outer-container;
+}
+
+@import 'about';
+@import 'nav-bar';
+@import 'sliding-menu';
+@import 'signin';
+@import 'journeys';
+@import 'columns';
