@@ -15,38 +15,9 @@
 <ul rn-carousel rn-carousel-controls class="post">
   <li ng-repeat="post in posts">
     <div class="layer">{{ image }}</div>
-    <img ng-src="{{ post['low_res_img'] }}">
+    <img ng-src="{{ post['hi_res_img'] }}">
   </li>
 </ul>
-<!-- <div ng-controller="PostCtrl"> -->
-<!-- <div ng-controller="SliderCtrl">
-<button type="button" ng-click="getImagesforSlider(user.id === userId, journey.id === journeyId)">click for slides</button>
-<div class="container slider">
-    <img ng-repeat="slide in slides" class="slide slide-animation" ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
-
-    <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
-    <a class="arrow next" href="#" ng-click="prevSlide()"></a>
-    <nav class="nav">
-        <div class="wrapper">
-            <ul class="dots">
-                <li class="dot" ng-repeat="slide in slides">
-                    <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
-                      ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a></li>
-            </ul>
-        </div>
-    </nav>
-</div> -->
-
-
-<!-- 
-<div class="multiple-items">
-  <div ng-repeat="post in posts">
-    <div><img ng-src="{{ post['low_res_img'] }}"></div>
-  </div>
-</div>
- -->
-
-<!-- </div> -->
 <!--   <ul>
     <li ng-repeat="post in posts">
       <img ng-src="{{ post['low_res_img'] }}"></a>
