@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('locativeApp')
-.service('JourneyService', ['$http', function($http) {
+.service('JourneyService', ['$http', function ($http) {
 
   this.getJourneys = function(user) {
     return $http.get('/api/users/' + user.id + '/journeys');

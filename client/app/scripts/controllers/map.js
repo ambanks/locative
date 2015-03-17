@@ -7,7 +7,8 @@
  * Controller of the locativeApp
  */
 angular.module('locativeApp')
-  .controller('MapCtrl', ['$scope', '$http', 'leafletData', '$stateParams', function ($scope, $http, leafletData, $stateParams) {
+  .controller('MapCtrl', ['$scope', '$http', 'leafletData', '$stateParams', 
+    function ($scope, $http, leafletData, $stateParams) {
     angular.extend($scope, {
                 markers: [],
                 bounds: {},
