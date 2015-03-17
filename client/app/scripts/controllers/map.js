@@ -24,7 +24,7 @@ angular.module('locativeApp')
                         continuousWorld: true
                       }
                     },
-                    satellite_street: {
+                    satelliteStreet: {
                       name: 'Satellite',
                       type: 'xyz',
                       url: 'https://{s}.tiles.mapbox.com/v4/mapbox.streets-satellite/{z}/{x}/{y}.png?secure&access_token=pk.eyJ1IjoiYmVubmV0dGF0b21zIiwiYSI6Ik1Td09jOUkifQ.2_RXTxWsYP_YjQI66y4kkg',

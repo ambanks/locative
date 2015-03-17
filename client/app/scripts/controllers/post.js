@@ -47,4 +47,4 @@ angular.module('locativeApp')
       alert('DESTROY ERROR: ' + status + ' : ' + JSON.stringify(data));
     });
   };
-});
+}]);

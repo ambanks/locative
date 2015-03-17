@@ -15,7 +15,7 @@ angular.module('locativeApp')
       'AngularJS',
       'Karma'
     ];
-  });
+  }]);
 
 // parallax
 /* jshint ignore:start */
@@ -75,5 +75,5 @@ $(document).ready(function() {
       }
     }
   });
-}]);
+});
 /* jshint ignore:end */
