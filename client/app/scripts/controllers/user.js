@@ -13,12 +13,17 @@ angular.module('locativeApp')
     });
   }
 
+  $scope.journeysNil = false;
+  
   function getUserById(id) {
     UserService.getUserById(id)
     .success(function(data) {
       console.log(JSON.stringify(data));
       $scope.user = data['user']; 
       $scope.journeys = data['journeys'];
+      if ($scope.journeys.length === 0) {
+        $scope.journeysNil = true;
+      }
     })
     .error(function(/* data, status, headers, config */) {
       alert('GET: error');
