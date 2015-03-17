@@ -33,6 +33,7 @@ module.exports = function(config) {
       'bower_components/lodash/dist/lodash.compat.js',
       'bower_components/angular-google-maps/dist/angular-google-maps.js',
       'bower_components/angular-xeditable/dist/js/xeditable.js',
+      'bower_components/angular-carousel/dist/angular-carousel.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/leaflet/dist/leaflet.js',
       'bower_components/leaflet/dist/leaflet-src.js',

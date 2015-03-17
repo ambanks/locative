@@ -12,7 +12,8 @@ angular
     'ngTouch',
     'uiGmapgoogle-maps',
     'leaflet-directive',
-    'xeditable'
+    'xeditable',
+    'angular-carousel'
   ])
     
 .config(['$httpProvider', '$stateProvider', '$urlRouterProvider', '$sceDelegateProvider', 
@@ -28,8 +29,8 @@ angular
     $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: 'views/main.html',
-      controller: 'MainCtrl'
+      templateUrl: 'views/about.html',
+      controller: 'AboutCtrl'
     })
     .state('about', {
       url: '/about',
