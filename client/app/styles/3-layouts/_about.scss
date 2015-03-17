@@ -312,3 +312,10 @@ span.journey-list-box {
   font-size: 2.8em;
   margin: 2em 0;
 }
+section.main-middle {
+  margin-top: 0px;
+}
+
+section.main-middle article:last-child {
+  width: 100%;
+}
