@@ -83,7 +83,7 @@ angular.module('locativeApp')
     var i;
     var posts = [];
 
-    $http.get('/api/users/' + $stateParams.userId + '/journeys/' + $stateParams.journeyId +'/posts')
+    $http.get('/api/users/' + $stateParams.userId + '/journeys/' + $stateParams.journeyId + '/posts')
     .success(function(data) {
       for (i=0; i < data.length; i++) {
         var postData = {
@@ -122,7 +122,7 @@ angular.module('locativeApp')
         }
       };
       
-      var markers = [];
+      var markers = []
       for(i=0;i<posts.length;i++) {
         markers.push(L.marker([parseFloat(posts[i].latitude), parseFloat(posts[i].longitude)]));
       }
@@ -132,18 +132,22 @@ angular.module('locativeApp')
         waypoints.push(L.latLng(parseFloat(posts[i].latitude), parseFloat(posts[i].longitude)));
       }
 
+      $scope.routeDisplayed = false;
+
       leafletData.getMap().then(function(map) {
         var itinerary;
         $scope.showRoute = function() {                    
-          itinerary = L.Routing.control({ waypoints: waypoints, show: true }).addTo(map);   
+          itinerary = L.Routing.control({ waypoints: waypoints, show: true }).addTo(map);
+          $scope.routeDisplayed = true;   
         };
 
         $scope.hideRoute = function() {                    
-          itinerary.removeFrom(map);  
+          itinerary.removeFrom(map);
+          $scope.routeDisplayed = false;  
         };
 
         for(i=0;i<posts.length;i++) {
-        markers[i].bindPopup('<img src="' + posts[i].lowResImg + '">' + posts[i].caption).addTo(map);
+          markers[i].bindPopup('<img src="' + posts[i].lowResImg + '">' + posts[i].caption).addTo(map);
         }
       });
     });
