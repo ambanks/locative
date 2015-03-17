@@ -2,7 +2,7 @@
 
 angular.module('locativeApp')
 
-.controller('CarouselCtrl', function ($scope, $http) {
+.controller('CarouselCtrl', ['$scope', '$http', function ($scope, $http) {
   $scope.myInterval = 4000;
   $scope.posts = function(user, journey) {
     return $http.get('/api/users/' + user.id + '/journeys/' + journey.id + '/posts/');
@@ -26,4 +26,4 @@ angular.module('locativeApp')
   // for (var i=0; i<posts.length; i++) {
   //   $scope.addSlide();
   // }
-});
+}]);
