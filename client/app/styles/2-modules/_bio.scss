@@ -1,0 +1,40 @@
+section.bio-pics {
+  @include outer-container(100%);
+
+  margin: 40px 20px;
+
+  article {
+    @include span-columns(3);
+    text-align: center;
+
+    img {
+      height: 250px;
+      width: 250px;
+      border-radius: 125px;
+      -webkit-border-radius: 125px;
+      -moz-border-radius: 125px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h2 {
+      font-size: $base-font-size * 2;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  }
+
+  section.social-media-icon {
+
+    img {
+      height: 20px;
+      width: 20px;
+      margin: 5px;
+    }
+  }
+}
+
+
+  
+
+

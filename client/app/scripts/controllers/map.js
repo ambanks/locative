@@ -152,6 +152,3 @@ angular.module('locativeApp')
       });
     });
   }]);
-
-
-

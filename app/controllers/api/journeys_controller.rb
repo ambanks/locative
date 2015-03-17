@@ -55,6 +55,6 @@ class Api::JourneysController < ApplicationController
     end
 
     def journey_params
-      params.require(:journey).permit(:name, :date, :user_id)
+      params.require(:journey).permit(:name, :date)
     end
 end
