@@ -1,6 +1,12 @@
 ## Description
 Prevailing social networks allow you to share moments with your friends. Locative aims higher, to let you tell your friends the story of your journey. It utilizes Instagram's API to pull in user posts and plot them on an interactive map according to where and when the pictures were taken. Share a journey through your favorite hole-in-the-wall restaurants, plot your progress on a road trip, or take your friends along on a hike some place they've never heard of. 
 
+##The Locative Team
+#####[Angel Banks](https://github.com/ambanks)
+#####[Jacob Baum](https://github.com/jacobbaum)
+#####[Ric Cabrera](https://github.com/riccabrera)
+#####[Bennett Adams](https://github.com/bennettatoms)
+
 ##Links
 #####[Heroku](https://)
 
