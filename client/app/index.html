@@ -38,9 +38,9 @@
                 ng-show="showTab(tab)"
                 ng-class="getTabClass(tab)"><a ui-sref="{{ tab.state }}">{{ tab.label }}</a>
             </li>
-         <!--    <li class="nav-link sign-out"
-              ng-show="isAuthenticated()"><a href="#/" ng-click="signOut()">Sign Out</a>
-            </li> -->
+            <li class="nav-link"
+               ng-show="isAuthenticated()"><a href="#/"><strong>{{ user ? user.email : '' }}</strong></a>
+           </li>
           </ul>
         </nav>
         <a class="nav-link sign-out" ng-show="isAuthenticated()" ng-click="signOut()">Sign Out</a>
@@ -49,13 +49,21 @@
       </div> 
     </header>
 
+    <div class="my-clearfix" style="clear:both; height: 1px;"></div>
     <div ui-view=""></div>
 
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+     <footer class="footer-2" role="contentinfo">
+      <ul>
+        <li><a href="javascript:void(0)">About</a></li>
+        <li><a href="javascript:void(0)">Contact</a></li>
+      </ul>
+
+      <div class="footer-secondary-links">
+        <ul class="footer-social">
+          <li><a href="https://instagram.com/locativeapp" class="fa fa-lg fa-instagram"></a></li>
+        </ul>
       </div>
-    </div>
+    </footer>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->

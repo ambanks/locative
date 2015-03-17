@@ -384,38 +384,46 @@ header.navigation {
   }
 }
 
+
 // Uncomment this for a sticky footer.
-//
-// .wrapper-for-content-outside-of-footer {
-//   min-height: 100%;
-//   height: auto !important;
-//   height: 100%;
-//   margin: 0 auto -4em;
-// }
 
-// html, body {
-//  height: 100%;
-// }
+$large-screen: em(860) !default;
 
-// .wrapper-for-content-outside-of-footer:after {
-//   content: "";
-//   display: block;
-// }
+$footer-height: 5em;
 
-// .footer-2, .wrapper-for-content-outside-of-footer:after {
-//   height: 17em;
+.wrapper-for-content-outside-of-footer {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -$footer-height;
+  }
 
-//   @include media($large-screen) {
-//     height: 4em;
-//   }
-// }
+  html, body {
+    height: 100%;
+  }
+
+.wrapper-for-content-outside-of-footer:after {
+  content: "";
+  display: block;
+}
+
+
+.footer-2, .wrapper-for-content-outside-of-footer:after {
+  height: 17em;
+
+  @include media($large-screen) {
+    height: $footer-height;
+  }
+}
+
 
 .footer-2 {
   ///////////////////////////////////////////////////////////////////////////////////
   $base-spacing: 1.5em !default;
-  $base-accent-color: #68838b !default;
+  $base-accent-color: #477DCA !default;
   $medium-screen: em(640) !default;
   $large-screen: em(860) !default;
+  $navigation-background: black;
   
   ul {
     margin: 0;
@@ -432,8 +440,8 @@ header.navigation {
   }
   //////////////////////////////////////////////////////////////////////////////////
 
-  $footer-background: black;
-  $footer-color: black;
+  $footer-background: $navigation-background;
+  $footer-color: white;
   $footer-link-color: transparentize($footer-color, 0.6);
   $footer-disclaimer-color: transparentize($footer-color, 0.6);
 
@@ -470,6 +478,7 @@ header.navigation {
   ul li {
     font-weight: 800;
     padding-right: 1em;
+    font-size: 2em;
 
     @include media($large-screen) {
       display: inline;
@@ -492,12 +501,17 @@ header.navigation {
     }
 
     li {
-      font-size: 0.8em;
+      font-size: 2em;
       font-weight: 400;
     }
 
     ul.footer-social {
       margin-top: 1em;
+
+      .fa-instagram:before {
+        height: 2.6em;
+      }
+      
 
       @include media($large-screen) {
         float: right;
@@ -505,7 +519,7 @@ header.navigation {
       }
 
       li {
-        font-size: 1em;
+        font-size: 2em;
         float: left;
         line-height: 0;
         padding-right: 0.7em;
@@ -515,17 +529,21 @@ header.navigation {
         }
       }
 
-      img {
-        height: 1.6em;
-        opacity: 0.7;
-        padding: 1px;
+        img {
+          height: 30px;
+          width: 30px;
+          opacity: 0.7;
+          padding: 1px;
 
-        &:focus,
-        &:hover {
+
+          &:focus,
+          &:hover {
           opacity: 1;
         }
       }
     }
   }
 }
+
+
 

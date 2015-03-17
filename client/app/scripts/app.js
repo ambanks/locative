@@ -29,8 +29,8 @@ angular
     $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: 'views/main.html',
-      controller: 'MainCtrl'
+      templateUrl: 'views/about.html',
+      controller: 'AboutCtrl'
     })
     .state('about', {
       url: '/about',
@@ -76,7 +76,7 @@ angular
       templateUrl: 'views/signin.html',
       controller: 'AuthCtrl'
     });
-    $urlRouterProvider.otherwise('home');
+    $urlRouterProvider.otherwise('/');
   }])
       // .state('user.journeys', {
       //   url: '/journeys',

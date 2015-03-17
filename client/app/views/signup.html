@@ -1,7 +1,6 @@
 <div class="registration">
-  <h1>Sign Up</h1>
 
-  <form class="signup-form" name="signUpForm" ng-submit="signUp()" novalidate style="margin-top: 303px;">
+  <form class="signup-form" name="signUpForm" ng-submit="signUp()" novalidate>
     <div class="form-group">
       <input type="text"
              name="name"
@@ -12,13 +11,13 @@
              ng-maxlength="40"
              required>
       <div ng-messages="signUpForm.name.$error">
-        <div class="text-danger" ng-message="required">You forgot to enter your name...</div>
-        <div class="text-danger" ng-message="minlength">Needs to have at least one letter...</div>
-        <div class="text-danger" ng-message="maxlength">Your name is too long...</div>
+        <div class="flash-error" ng-message="required">You forgot to enter your username...</div>
+        <div class="flash-error" ng-message="minlength">Your username must have at least one letter...</div>
+        <div class="flash-error" ng-message="maxlength">Your username is too long...</div>
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-2">
       <input type="email"
              name="email"
              class="form-control"
@@ -28,14 +27,14 @@
              ng-maxlength="40"
              required>
       <div ng-messages="signUpForm.email.$error">
-        <div class="text-danger" ng-message="required">You forgot to enter your email address...</div>
-        <div class="text-danger" ng-message="minlength">Your email address is too short...</div>
-        <div class="text-danger" ng-message="maxlength">Your email address is too long...</div>
-        <div class="text-danger" ng-message="email">You did not enter your email address correctly...</div>
+        <div class="flash-error" ng-message="required">You forgot to enter your email address...</div>
+        <div class="flash-error" ng-message="minlength">Your email address is too short...</div>
+        <div class="flash-error" ng-message="maxlength">Your email address is too long...</div>
+        <div class="flash-error" ng-message="email">You did not enter your email address correctly...</div>
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-2">
       <input type="password"
              name="password"
              class="form-control"
@@ -45,13 +44,13 @@
              ng-maxlength="20"
              required>
       <div ng-messages="registrationForm.password.$error">
-        <div class="text-danger" ng-message="required">You forgot to enter your password address...</div>
-        <div class="text-danger" ng-message="minlength">Your password is too short...</div>
-        <div class="text-danger" ng-message="maxlength">Your password is too long...</div>
+        <div class="flash-error" ng-message="required">You forgot to enter your password...</div>
+        <div class="flash-error" ng-message="minlength">Your password is too short...</div>
+        <div class="flash-error" ng-message="maxlength">Your password is too long...</div>
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-2">
       <input type="password"
              name="password-confirmation"
              class="form-control"
@@ -61,24 +60,24 @@
              ng-maxlength="20"
              required>
       <div ng-messages="registrationForm.password.$error">
-        <div class="text-danger" ng-message="required">You forgot to enter your password address...</div>
-        <div class="text-danger" ng-message="minlength">Your password is too short...</div>
-        <div class="text-danger" ng-message="maxlength">Your password is too long...</div>
+        <div class="flash-error" ng-message="required">You forgot to enter your password...</div>
+        <div class="flash-error" ng-message="minlength">Your password is too short...</div>
+        <div class="flash-error" ng-message="maxlength">Your password is too long...</div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group-2">
       <input type="text"
              name="name"
              class="form-control"
-             placeholder="Name on Instagram"
+             placeholder="Instagram Username"
              ng-model="user['instagram_name']"
              ng-minlength="1"
              ng-maxlength="40"
              required>
       <div ng-messages="signUpForm.name.$error">
-        <div class="text-danger" ng-message="required">You forgot to enter your name...</div>
-        <div class="text-danger" ng-message="minlength">Needs to have at least one letter...</div>
-        <div class="text-danger" ng-message="maxlength">Your name is too long...</div>
+        <div class="flash-error" ng-message="required">You forgot to enter your instagram username...</div>
+        <div class="flash-error" ng-message="minlength">You must have at least one letter...</div>
+        <div class="flash-error" ng-message="maxlength">Your instagram username is too long...</div>
       </div>
     </div>
     <button class="sign-in"
