@@ -1,7 +1,10 @@
-<h2>Users</h2>
-
-<h3 ng-repeat="user in users">
-  <a ui-sref="user({userId: user.id})">{{ user.name }}</a>
-</h3>
+<div class="user-header">
+  <h2>Users</h2>
+</div>
+<div class="user-listing">
+  <h3 ng-repeat="user in users">
+    <a ui-sref="user({userId: user.id})">{{ user.name }}</a>
+  </h3>
+</div>
 
 <!-- <div ui-view=""></div> -->

@@ -32,16 +32,17 @@
         <a href="javascript:void(0)" class="logo" ui-href="home">
          <img src="images/locative_white.png" alt="Logo Image">
         </a>
-
         <nav role="navigation">
           <ul id="js-navigation-menu" class="navigation-menu show">
             <li class="nav-link"
                 ng-repeat="tab in tabs"
                 ng-show="showTab(tab)"
-                ng-class="getTabClass(tab)"><a ui-sref="{{ tab.state }}">{{ tab.label }}</a>
+                ng-class="getTabClass(tab)">
+                <a ui-sref="{{ tab.state }}">{{ tab.label }}</a>
             </li>
             <li class="nav-link"
-               ng-show="isAuthenticated()"><a href="#/"><strong>{{ user ? user.email : '' }}</strong></a>
+               ng-show="isAuthenticated()">
+               <a href="#/"><strong>{{ user ? user.email : '' }}</strong></a>
            </li>
           </ul>
         </nav>
@@ -54,7 +55,7 @@
     <div class="my-clearfix" style="clear:both; height: 1px;"></div>
     <div ui-view=""></div>
 
-     <footer class="footer-2" role="contentinfo">
+    <footer class="footer-2" role="contentinfo">
       <ul>
         <li><a href="javascript:void(0)">About</a></li>
         <li><a href="javascript:void(0)">Contact</a></li>
@@ -66,18 +67,6 @@
         </ul>
       </div>
     </footer>
-
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
 
 
     <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -97,9 +86,9 @@
     <script src="bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
     <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
-    <script src="bower_components/angular-carousel/dist/angular-carousel.js"></script>
     <script src="bower_components/angular-mocks/angular-mocks.js"></script>
     <script src="bower_components/leaflet/dist/leaflet.js"></script>
+    <script src="bower_components/angular-carousel/dist/angular-carousel.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
