@@ -2,9 +2,10 @@
 
 angular.module('locativeApp')
 
-.controller('PostCtrl', function ($scope, PostService, xeditable) {
+.controller('PostCtrl', ['$scope', 'PostService', 'xeditable', 
+  function ($scope, PostService, xeditable) {
 
-  function getPosts() {
+  function getPosts(user, journey) {
     PostService.getPosts(user, journey)
     .success(function(data) {
       $scope.posts = data;
@@ -14,7 +15,7 @@ angular.module('locativeApp')
     });
   }
 
-  getPosts();
+  // getPosts();
 
   $scope.getPost = function(user, journey, post) {
     PostService.getPost(user, journey, post)
@@ -47,4 +48,4 @@ angular.module('locativeApp')
       alert('DESTROY ERROR: ' + status + ' : ' + JSON.stringify(data));
     });
   };
-});
+}]);

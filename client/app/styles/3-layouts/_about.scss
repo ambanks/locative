@@ -1,0 +1,321 @@
+.device-background {
+  ///////////////////////////////////////////////////////////////////////////////////
+  $base-border-radius: 0px !default;
+  $base-accent-color: #FFFFFF !default;
+  $large-screen: em(860) !default;
+
+  p {
+    line-height: 1.5em;
+  }
+
+  h4 {
+    font-size: 1.5em;
+    margin: 0;
+  }
+  //////////////////////////////////////////////////////////////////////////////////
+
+  $device-padding-vertical: 5em;
+  $device-padding-horizontal: 0.4em;
+  $device-screen-width: 14em;
+  $device-screen-height: 25em;
+  $device-background: #FFFFFF;
+  $device-backside-background: #FFFFFF;
+  $device-text-color: #FFFFFF;
+  $device-background-top: #162C4C; 
+  $device-background-bottom: #0A120D;
+  $gradient-angle: 10deg;
+  $device-image: 'https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png';
+  $device-screen-image: 'https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/cosmin_capitanu_screen.jpg';
+
+  @include background(url($device-image), linear-gradient($gradient-angle, $device-background-bottom, $device-background-top), no-repeat $device-background-top scroll);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 20em;
+  width: 100%;
+
+  .device-text {
+    color: $device-text-color;
+    padding: 2em;
+
+    @include media($large-screen) {
+      float: left;
+      max-width: 100%;
+      padding: 4em;
+    }
+
+    h4 {
+      border-bottom: 1px solid transparentize($device-text-color, 0.7);
+      margin-bottom: 0.5em;
+      padding-bottom: 0.5em;
+    }
+
+    p {
+      margin-bottom: 1.5em;
+    }
+
+    button {
+      @include button(flat, $base-accent-color);
+      padding: 0.7em 1em;
+    }
+  }
+
+  .device {
+    display: none;
+    position: relative;
+
+    @include media($large-screen) {
+      @include transform(
+        perspective(800px) 
+        translateX(0px) 
+        translateY(-100px) 
+        translateZ(50px) 
+        rotateX(0deg) 
+        rotateY(-20deg) 
+        rotateZ(-0deg));
+      background: $device-background;
+      border-radius: 2em;
+      box-shadow: 
+        1px 0px lighten($device-backside-background, 20%), 
+        4px 0px lighten($device-backside-background, 2%),
+        7px 0px $device-backside-background,
+        10px 0px $device-backside-background,
+        13px 0px $device-backside-background;
+      display: block;
+      float: right;
+      margin-bottom: -12em;
+      margin-right: 5em;
+      padding: $device-padding-vertical 0;
+      width: $device-screen-width + (2 * $device-padding-horizontal);
+      z-index: 99999;
+
+      .screen {
+        @include size($device-screen-width $device-screen-height);
+        background-image: url($device-screen-image);
+        background-size: cover;
+        border-radius: 0.2em;
+        box-shadow: inset 0 1px 8px transparentize(black, 0.5);
+        margin: auto;
+      }
+    }
+  }
+}
+
+//PARALLAX WINDOW
+
+$parallax-window-height: 1000px;
+$parallax-background-height: $parallax-window-height;
+
+.parallax-window {
+  max-height: $parallax-window-height;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  font-size: 5em;
+  font-weight: bold;
+  width: 100%;
+  height: 950px;
+}
+
+.parallax-static-content {
+  color: #68838b;
+  padding: 8em 0;
+  float: left;
+  padding-left: 10em;
+  position: absolute;
+  z-index: 9;
+}
+
+.parallax-background {
+  background: url('/images/picjumbo.com_HNCK4085.jpg') no-repeat;
+  background-position: top;
+  background-size: cover;
+  background-color: #FFFFFF;
+  height: $parallax-window-height;
+  left: 0;
+  position: absolute;
+  top: - $parallax-window-height / 4;
+  width: 100%;
+}
+
+.p {
+  background-color: #FFFFFF; 
+  opacity: 0;
+}
+
+//SIDEimage
+.side-image {  
+  
+///////////////////////////////////////////////////////////////////////////////////
+  $base-line-height: 1.5em !default;
+  $base-accent-color: #68838b !default;
+  $base-link-color: $base-accent-color !default;
+  $dark-gray: #333 !default;
+  $large-screen: em(860) !default;
+  $base-font-color: $dark-gray !default;
+  
+  p {
+    color: $base-font-color;
+    line-height: $base-line-height;
+    font-size: $base-font-size *2;
+  }
+  
+//////////////////////////////////////////////////////////////////////////////////
+
+  $side-image-background-top: #B5EBEB;
+  $side-image-background-bottom: #5DAC5D;
+  $side-image-content-background: #F9F9F9;
+  $side-image-border: 1px solid darken(transparentize($side-image-background-bottom, 0.8), 30%);
+
+  background: black;
+
+  @include media($large-screen) {
+    @include row(table);
+  }
+
+  .images-wrapper {
+    @include background(url('/images/girloncliff_diffuse.png'), linear-gradient($side-image-background-top, $side-image-background-bottom), no-repeat $side-image-background-top scroll);
+    
+    background-color: $side-image-background-top;
+    background-size: cover;
+    border-bottom: $side-image-border;
+    display: block;
+    min-height: 12em;
+    padding: 3em;
+
+    @include media($large-screen) {
+      @include span-columns(4);
+      background-position: bottom;
+      background-size: cover;
+      border-right: $side-image-border;
+    }
+  }
+
+  .side-image-content {
+    @include span-columns(12);
+    padding: 1em 1em 4em 1em;
+
+    @include media($large-screen) {
+      @include span-columns(8);
+      padding: 4em 4em 8em 4em;
+    }
+
+    h1 {
+      margin-bottom: 0.9em;
+      color: #FFFFFF;
+      font-size: $base-font-size *3;
+      text-align: center; 
+    }
+
+    h4 {
+      background: #FFFFFF;
+      color: #FFFFFF;
+      display: inline-block;
+      font-size: $base-font-size * 3;
+      font-weight: 800;
+      margin-bottom: 1.3em;
+      padding: 3px 8px;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: #FFFFFF;
+      margin-bottom: 3em;
+      font-size: 2em;
+    }
+
+    button {
+      @include button(flat, $base-accent-color);
+      padding: 0.7em 1em;
+    }
+  }
+
+  @include reset-display();
+}
+
+.fade-in-element {
+  ///////////////////////////////////////////////////////////////////////////////////
+  $base-border-color: gainsboro !default;
+  $base-border-radius: 3px !default;
+  $base-background-color: black !default;
+  $base-line-height: 1.5em !default;
+  $base-spacing: 1.5em !default;
+  $dark-gray: #333 !default;
+  $base-font-color: white !default;
+  
+  line-height: $base-line-height;
+
+  p {
+    color: white;
+    line-height: $base-line-height;
+    font-size: $base-font-size *2;
+  }
+  //////////////////////////////////////////////////////////////////////////////////
+
+  @include clearfix;
+  background: black;
+  border-radius: $base-border-radius;
+  border: 1px solid silver;
+  box-shadow: 0 10px 10px transparentize(black, 0.8);
+  margin-bottom: 4em;
+  padding: $base-spacing;
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+
+}
+
+.js-fade-element-hide {
+  opacity: 0;
+}
+
+.js-fade-element-show {
+  @include transition (all 0.4s ease-in-out);
+  opacity: 1;
+}
+
+/* hollow sm icons */
+a, a:hover {
+    text-decoration: none;
+}
+
+.socialbtns, .socialbtns ul, .socialbtns li {
+    margin: 0;
+    padding: 5px;
+}
+
+.socialbtns li {
+    list-style: none outside none;
+    display: inline-block;
+}
+
+.socialbtns .fa {
+    width: 40px;
+    height: 28px;
+    color: #000;
+    background-color: #FFF;
+    border: 1px solid #000;
+    padding-top: 12px;
+    border-radius: 22px;
+    -moz-border-radius: 22px;
+    -webkit-border-radius: 22px;
+    -o-border-radius: 22px;
+}
+
+.socialbtns .fa:hover {
+    color: #FFF;
+    background-color: #000;
+    border: 1px solid #000;
+}
+
+span.journey-list-box {
+  font-size: 2.8em;
+  margin: 2em 0;
+}
+section.main-middle {
+  margin-top: 0px;
+}
+
+section.main-middle article:last-child {
+  width: 100%;
+}

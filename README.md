@@ -50,4 +50,3 @@ Lucidchart ERD Tool
 HTML5
 
 CSS3
-

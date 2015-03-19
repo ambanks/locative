@@ -1,0 +1,167 @@
+section.main-middle {
+  @include outer-container(100%);
+
+  article {
+    @include span-columns(6);
+    margin-right: 0px;
+    width: 100%;
+  }
+}
+
+.side-image .side-image-content {
+  background-color: #3A1E06;
+}
+
+/*/HOVER-TILE*/
+
+.hover-tile-outer {
+  ///////////////////////////////////////////////////////////////////////////////////
+  $base-border-color: #FFFFFF !default;
+  $base-line-height: 1.5em !default;
+  $medium-screen: em(640) !default;
+  
+  h4 {
+    margin: 0;
+    font-size: $base-font-size * 3;
+  }
+
+  p {
+    line-height: $base-line-height;
+    font-size: $base-font-size * 2;
+  }
+  //////////////////////////////////////////////////////////////////////////////////
+
+  $hover-tile-height: 30em;
+
+  background: url("/images/rolling-hills-m1.jpg");
+  background-position: top;
+  background-size: cover;
+  background-color: #FFFFFF;
+  border: 1px solid $base-border-color;
+  cursor: pointer;
+  height: $hover-tile-height;
+  margin-bottom: $base-line-height;
+  
+  @include media($medium-screen) {
+    width: 100%;
+  }
+
+  .hover-tile-container {
+    height: $hover-tile-height;
+    overflow: hidden;
+  }
+
+  .hover-tile-container:hover > .hover-tile {
+    @include transform(translate(0, -100%));
+  }
+
+  .hover-tile {
+    @include transition(all, 0.2s ease-in-out);
+    background: inherit;
+    color: #FFFFFF;
+    height: inherit;
+    overflow: hidden;
+    padding: $base-spacing;
+  }
+
+  .hover-tile-hidden {
+    background: transparentize(#000, 0.5);
+
+    p {
+      color: transparentize(#fff, 0.3);
+    }
+
+    h4 {
+      margin-bottom: 0.5em;
+    }
+  }
+
+  .sign-up {
+    @include button(flat, #68838b);
+    display: inline;
+    float: right;
+    font-size: 1em;
+    margin-top: 1em;
+    padding: 0.75em;
+    text-transform: uppercase;
+    float: left;
+  }
+
+}
+
+/*/HOVER-TILE-2*/
+
+.hover-tile-outer-2 {
+  ///////////////////////////////////////////////////////////////////////////////////
+  $base-border-color: #FFFFFF !default;
+  $base-line-height: 1.5em !default;
+  $medium-screen: em(640) !default;
+  
+  h4 {
+    margin: 0;
+    font-size: $base-font-size * 3;
+  }
+
+  p {
+    line-height: $base-line-height;
+    font-size: $base-font-size * 2;
+  }
+  /////////////////////////////////////////////////////////////////
+
+  $hover-tile-height: 30em;
+
+  background: url("/images/backpackers_on_cliff.jpg");
+  background-position: top;
+  background-size: cover;
+  background-color: #FFFFFF;
+  border: 1px solid $base-border-color;
+  cursor: pointer;
+  height: $hover-tile-height;
+  margin-bottom: $base-line-height;
+  
+  @include media($medium-screen) {
+    width: 40%;
+  }
+
+  .hover-tile-container {
+    height: $hover-tile-height;
+    overflow: hidden;
+  }
+
+  .hover-tile-container:hover > .hover-tile {
+    @include transform(translate(0, -100%));
+  }
+
+  .hover-tile {
+    @include transition(all, 0.2s ease-in-out);
+    background: inherit;
+    color: #FFFFFF;
+    height: inherit;
+    overflow: hidden;
+    padding: $base-spacing;
+  }
+
+  .hover-tile-hidden {
+    background: transparentize(#000, 0.5);
+
+    p {
+      color: transparentize(#fff, 0.3);
+    }
+
+    h4 {
+      margin-bottom: 0.5em;
+    }
+  }
+
+   .sign-up {
+    @include button(flat, #68838b);
+    display: inline;
+    float: right;
+    font-size: 1em;
+    margin-top: 1em;
+    padding: 0.75em;
+    text-transform: uppercase;
+    float: left;
+  }
+}
+

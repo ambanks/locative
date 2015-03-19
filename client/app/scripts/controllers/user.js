@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('locativeApp')
-.controller('UserCtrl', ['$scope', 'UserService', '$state', '$stateParams', function ($scope, UserService, $state, $stateParams) {
+.controller('UserCtrl', ['$scope', 'UserService', '$state', '$stateParams', 
+  function ($scope, UserService, $state, $stateParams) {
 
   function getUsers() {
     UserService.getUsers()
@@ -34,8 +35,8 @@ angular.module('locativeApp')
     UserService.getUserJourney(userId, journeyId)
     .success(function(data) {
       console.log(JSON.stringify(data));
-      $scope.journey = data['journey']; 
-      $scope.posts = data['posts'];
+      $scope.journey = data.user; 
+      $scope.posts = data.user;
     })
     .error(function(/* data, status, headers, config */) {
       alert('GET: error');

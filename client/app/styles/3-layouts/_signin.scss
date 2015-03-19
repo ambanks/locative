@@ -1,0 +1,158 @@
+$base-accent-color: #68838b !default;
+
+//SEARCH BAR
+form.search-bar {  
+  ///////////////////////////////////////////////////////////////////////////////////
+  $base-border-color: gainsboro !default;
+  $base-border-radius: 3px !default;
+  $base-line-height: 1.5em !default;
+  $base-accent-color: #477DCA !default;
+  $dark-gray: #333 !default;
+  //////////////////////////////////////////////////////////////////////////////////
+
+  $search-bar-border-color: $base-border-color;
+  $search-bar-border: 1px solid $search-bar-border-color;
+  $search-bar-background: lighten($search-bar-border-color, 10%);
+
+  position: relative;
+
+  input[type=search] {
+    @include appearance(none);
+    @include box-sizing(border-box);
+    @include transition(border-color);
+    background-color: #FFFFFF;
+    border-radius: $base-border-radius;
+    border-radius: $base-border-radius;
+    border: 1px solid $base-border-color;
+    display: block;
+    font-size: 1em;
+    font-style: italic;
+    margin: 0;
+    padding: ($base-spacing / 3) ($base-spacing / 3);
+    position: relative;
+    width: 100%;
+  }
+
+  button[type=submit] {
+    @include button(flat, $base-accent-color);
+    @include position(absolute, 0em 0em 0em null);
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    outline: none;
+    padding: 5px 10px;
+
+    img {
+      height: 12px;
+      opacity: 0.7;
+    }
+  }
+}
+
+//SIGNIN FORM
+
+.signin-form {
+  margin: 100px auto;
+  width: 400px;
+  text-align: center;
+}
+
+.form-group {
+
+  @include outer-container(100%);
+
+  display: block;
+  margin: 0 auto;
+
+  fieldset {            
+    background-color: lighten($base-border-color, 10%);
+    border: $base-border;
+    margin: 0 0 $small-spacing;
+    padding: $base-spacing;
+  }
+
+  input,
+  label,
+  select {
+    display: block;
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+  }
+
+  label {
+    font-weight: 600;
+    margin-bottom: $small-spacing / 2;
+
+      &.required::after {
+      content: "*";
+    }
+
+    abbr {
+    display: none;
+    }
+  }
+
+  #{$all-text-inputs},
+  select[multiple=multiple],
+  textarea {
+    background-color: $base-background-color;
+    border: $base-border;
+    border-radius: $base-border-radius;
+    box-shadow: $form-box-shadow;
+    box-sizing: border-box;
+    font-family: $base-font-family;
+    font-size: $base-font-size *2;
+    margin-bottom: $base-spacing / 2;
+    padding: $base-spacing / 3;
+    transition: border-color;
+
+    &:hover {
+    border-color: darken($base-border-color, 10%);
+  }
+
+    &:focus {
+      border-color: $action-color;
+      box-shadow: $form-box-shadow-focus;
+      outline: none;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  input[type="search"] {
+    @include appearance(none);
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    display: inline;
+    margin-right: $small-spacing / 2;
+  }
+
+  input[type="file"] {
+    padding-bottom: $small-spacing;
+    width: 100%;
+  }
+
+  select {
+    margin-bottom: $base-spacing;
+    max-width: 100%;
+    width: auto;
+  }
+}
+
+.sign-in {
+    @include button(flat, #68838b);
+    font-size: 1.5em;
+    margin-top: 1em;
+    padding: 0.75em;
+    text-transform: uppercase;
+}
+
+p {
+  text-align: center;
+  font-size: $base-font-size *1.5;
+  padding: 10px;
+
+}

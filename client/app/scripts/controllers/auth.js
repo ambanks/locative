@@ -11,7 +11,7 @@ angular.module('locativeApp')
     .success(function(user) {
       console.log('Rails promised to sign up: ' + JSON.stringify(user));
       $rootScope.$emit('auth:new-sign-up', user);
-      $state.go('home');
+      $state.go('user', { userId: user.id });
     })
     .error(function(error) {
       alert('Registration Failed: ' + JSON.stringify(error));
@@ -24,7 +24,7 @@ angular.module('locativeApp')
     .success(function(user) {
       console.log('Rails promised to sign in: ' + JSON.stringify(user));
       $rootScope.$emit('auth:sign-in', user);
-      $state.go('home');
+      $state.go('user', { userId: user.id });
     })
     .error(function(error) {
       alert('Sign In Failed: ' + JSON.stringify(error));

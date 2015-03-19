@@ -7,7 +7,8 @@
  * Controller of the locativeApp
  */
 angular.module('locativeApp')
-  .controller('MapCtrl', ['$scope', '$http', 'leafletData', '$stateParams', function ($scope, $http, leafletData, $stateParams) {
+  .controller('MapCtrl', ['$scope', '$http', 'leafletData', '$stateParams', 
+    function ($scope, $http, leafletData, $stateParams) {
     angular.extend($scope, {
                 markers: [],
                 bounds: {},
@@ -122,7 +123,7 @@ angular.module('locativeApp')
         }
       };
       
-      var markers = []
+      var markers = [];
       for(i=0;i<posts.length;i++) {
         markers.push(L.marker([parseFloat(posts[i].latitude), parseFloat(posts[i].longitude)]));
       }
@@ -152,6 +153,3 @@ angular.module('locativeApp')
       });
     });
   }]);
-
-
-

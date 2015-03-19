@@ -8,86 +8,65 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css" />
-    <link rel="stylesheet" href="bower_components/angular-carousel/dist/angular-carousel.css" />
+    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css" />>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css">
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/slider.css">
-    <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css">
     <link rel="stylesheet" href="styles/leaflet-routing-machine.css" />
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
+    <link type="text/css" rel="stylesheet" href="path-to-fontawesome/font-awesome.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="locativeApp">
+
+  <body ng-app="locativeApp" ng-controller="ApplicationCtrl" ng-cloak>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation" ng-controller="NavCtrl">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" ui-href="home">locative</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-            <ul class="nav navbar-nav">
-              <li ng-repeat="tab in tabs"
-                  ng-show="showTab(tab)"
-                  ng-class="getTabClass(tab)">
+    <header class="navigation" role="banner" ng-controller="NavCtrl">
+      <div class="navigation-wrapper">
+        <a href="javascript:void(0)" class="logo" ui-href="home">
+         <img src="images/locative_white.png" alt="Logo Image">
+        </a>
+        <nav role="navigation">
+          <ul id="js-navigation-menu" class="navigation-menu show">
+            <li class="nav-link"
+                ng-repeat="tab in tabs"
+                ng-show="showTab(tab)"
+                ng-class="getTabClass(tab)">
                 <a ui-sref="{{ tab.state }}">{{ tab.label }}</a>
-              </li>
-              <li ng-hide="isAuthenticated()">
-                <a ui-sref="signin">Sign In</a>
-              </li>
-              <li ng-hide="isAuthenticated()">
-                <a ui-sref="signup">Sign Up</a>
-              </li>
-              <li ng-show="isAuthenticated()">
-                <a href="#/">{{ user ? user.email : '' }}</a>
-              </li>
-              <li ng-show="isAuthenticated()">
-                <a href="#/" ng-click="signOut()">Sign Out</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+            </li>
+            <li class="nav-link"
+               ng-show="isAuthenticated()">
+               <a href="#/"><strong>{{ user ? user.email : '' }}</strong></a>
+           </li>
+          </ul>
+        </nav>
+        <a class="nav-link sign-out" ng-show="isAuthenticated()" ng-click="signOut()">Sign Out</a>
+      <a ng-hide="isAuthenticated()" ui-sref="signup" class="sign-up">Sign Up</a>
+      <a ng-hide="isAuthenticated()" ui-sref="signin" class="sign-in">Sign In</a>
+      </div> 
+    </header>
+
+    <div class="my-clearfix" style="clear:both; height: 1px;"></div>
+    <div ui-view=""></div>
+
+    <footer class="footer-2" role="contentinfo">
+      <ul>
+        <li><a href="javascript:void(0)">About</a></li>
+        <li><a href="javascript:void(0)">Contact</a></li>
+      </ul>
+
+      <div class="footer-secondary-links">
+        <ul class="footer-social">
+          <li><a href="https://instagram.com/locativeapp" class="fa fa-lg fa-instagram"></a></li>
+        </ul>
       </div>
-    </div>
-
-    <div class="container">
-      <div ui-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
-
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
+    </footer>
 
 
     <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -107,8 +86,14 @@
     <script src="bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
     <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
-    <script src="bower_components/angular-carousel/dist/angular-carousel.js"></script>
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/leaflet/dist/leaflet.js"></script>
+    <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
+    <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
     <!-- endbower -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-animate.min.js"></script>
+    <script src="scripts/leaflet-routing-machine.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.3/TweenMax.min.js"></script>
     <!-- endbuild -->
 
         
@@ -116,21 +101,18 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/nav.js"></script>
     <script src="scripts/controllers/auth.js"></script>
+    <script src="scripts/controllers/application.js"></script>
     <script src="scripts/controllers/map.js"></script>
     <script src="scripts/controllers/about.js"></script>
     <script src="scripts/controllers/user.js"></script>
     <script src="scripts/controllers/journey.js"></script>
     <script src="scripts/controllers/post.js"></script>
+    <script src="scripts/controllers/form.js"></script>    
     <script src="scripts/controllers/slider.js"></script>
     <script src="scripts/services/auth.js"></script>
     <script src="scripts/services/user.js"></script>
     <script src="scripts/services/journey.js"></script>
     <script src="scripts/services/post.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-animate.min.js"></script>
-    <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
-    <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
-    <script src="scripts/leaflet-routing-machine.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.3/TweenMax.min.js"></script>
     <!-- endbuild -->
 </body>
 </html>
